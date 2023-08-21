@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #8C8C8C;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer.page-footer {
+    padding-top: 2;
+    text-align: right;
+}
+
+.center.brand-logo {
+    font-size: 40px;
+}
+
+nav {
+    height: 100px;
+}
+
+h3 {
+    margin-top: 70px;
+}
