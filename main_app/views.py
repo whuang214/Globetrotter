@@ -22,7 +22,7 @@ def about(request):
 # GET request gets the view
 # POST request submits the form
 class SignUpView(CreateView):
-    template_name = "auth/auth_form.html"
+    template_name = "auth/signup_form.html"
     form_class = UserCreationForm
     success_url = reverse_lazy("home")
 
@@ -36,7 +36,7 @@ class SignUpView(CreateView):
 # automatically passes in fields from the form
 # fields: username, password
 class LoginView(LoginView):
-    template_name = "auth/auth_form.html"
+    template_name = "auth/login_form.html"
     # dont need to specify the form_class b/c it is already specified in the super class
     success_url = reverse_lazy("home")
 
