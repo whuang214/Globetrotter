@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # models imports
@@ -61,3 +62,34 @@ class ItineraryIndex(ListView):
         # Filter items based on the user
         queryset = TravelItinerary.objects.filter(user=user)
         return queryset
+
+
+class ItineraryDetail(DetailView):
+    model = TravelItinerary
+    template_name = "itineraries/detail.html"
+    context_object_name = "itinerary"
+
+
+class ItineraryCreate(CreateView):
+    model = TravelItinerary
+    template_name = "itineraries/create.html"
+    fields = "__all__"
+    success_url = reverse_lazy("index")
+
+    # TODO - set the user field to the currently logged in user
+    # def form_valid(self, form):
+    #     form.instance.user = self.request.user
+    #     return super().form_valid(form)
+
+
+class ItineraryUpdate(UpdateView):
+    model = TravelItinerary
+    template_name = "itineraries/update.html"
+    fields = "__all__"
+    success_url = reverse_lazy("index")
+
+
+class ItineraryDelete(DeleteView):
+    model = TravelItinerary
+    template_name = "itineraries/delete.html"
+    success_url = reverse_lazy("index")
