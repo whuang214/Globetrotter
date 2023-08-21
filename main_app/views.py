@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from .models import TravelItinerary
 
 
@@ -22,5 +23,5 @@ class ItineraryIndex(ListView):
         user = self.request.user
         
         # Filter items based on the user
-        queryset = Item.objects.filter(user=user)
+        queryset = TravelItinerary.objects.filter(user=user)
         return queryset
