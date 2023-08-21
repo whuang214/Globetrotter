@@ -4,9 +4,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # models imports
 from .models import TravelItinerary
+from .forms import CustomUserCreationForm
 
 # auth imports
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
 
 
@@ -23,7 +23,7 @@ def about(request):
 # POST request submits the form
 class SignUpView(CreateView):
     template_name = "auth/signup_form.html"
-    form_class = UserCreationForm
+    form_class = CustomUserCreationForm
     success_url = reverse_lazy("home")
 
     # add a title to the context
