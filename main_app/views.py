@@ -7,7 +7,7 @@ from .models import TravelItinerary
 
 # auth imports
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 
 # Create your views here.
@@ -45,3 +45,8 @@ class LoginView(LoginView):
         context = super().get_context_data(**kwargs)
         context["title"] = "Log In"
         return context
+
+
+class LogoutView(LogoutView):
+    template_name = "auth/logout_form.html"
+    success_url = reverse_lazy("home")
