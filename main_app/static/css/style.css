@@ -22,6 +22,14 @@ nav {
     height: 100px;
 }
 
+/* ul.nav {
+    text-align: center;
+} */
+
 h3 {
     margin-top: 70px;
+}
+
+form {
+    color: white;
 }

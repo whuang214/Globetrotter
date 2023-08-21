@@ -8,7 +8,7 @@
   {% csrf_token %} 
   {{ form.as_table }}
   <input type="submit" class="btn" value="Sign Up" />
-  <p>Already have an account? <a href="{% url 'login' %}">Login here!</a></p>
+  <p>Already have an account? <a class="amber-text text-lighten-2" href="{% url 'login' %}">Login here!</a></p>
 </form>
 <!-- prettier-ignore-end -->
 {% endblock %}
