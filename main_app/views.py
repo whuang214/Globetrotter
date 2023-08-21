@@ -8,7 +8,7 @@ from .models import TravelItinerary
 
 # auth imports
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 
 # Create your views here.
@@ -93,3 +93,8 @@ class ItineraryDelete(DeleteView):
     model = TravelItinerary
     template_name = "itineraries/delete.html"
     success_url = reverse_lazy("index")
+
+
+class LogoutView(LogoutView):
+    template_name = "auth/logout_form.html"
+    success_url = reverse_lazy("home")
