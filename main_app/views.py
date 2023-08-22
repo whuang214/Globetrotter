@@ -8,6 +8,7 @@ from .models import TravelItinerary
 from .forms import CustomUserCreationForm
 
 # auth imports
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LoginView, LogoutView
 
 
@@ -32,6 +33,20 @@ class SignUpView(CreateView):
         context = super().get_context_data(**kwargs)
         context["title"] = "Sign Up"
         return context
+
+    def form_valid(self, form):
+        # Save the form and create the user
+        response = super().form_valid(form)
+
+        # Log in the user after signing up
+        user = authenticate(
+            username=form.cleaned_data["username"],
+            password=form.cleaned_data["password1"],
+        )
+        if user is not None:
+            login(self.request, user)
+
+        return response
 
 
 # automatically passes in fields from the form
@@ -82,9 +97,16 @@ class ItineraryCreate(CreateView):
     success_url = reverse_lazy("index_itinerary")
 
     def form_valid(self, form):
+        # doesnt work because user attribute does not exist on the itinerary model.
+        # The itinerary model has a users (array) not a user (single user)
+        # form.instance.user = self.request.user
+
+        # save the form and get the itinerary object
         itinerary = form.save(commit=False)
         itinerary.save()
+        # add user to array of users in the itinerary
         itinerary.users.add(self.request.user)
+
         return super().form_valid(form)
 
 
