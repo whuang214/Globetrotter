@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Log In</h3>
 
 <p class="red-text">{{ error_message }}</p>
 
 <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="btn" value="Log In">
-    <p>Need to make an account? <a class="amber-text text-lighten-2" href="{% url 'signup' %}">Sign up here!</a></p>
+    <div class="container logging">
+        <input type="text" class="username" name="username" placeholder="Username"/>
+        <input type="text" class="password" name="password" placeholder="Password"/>
+        <input type="submit" class="btn" value="Log In" />
+    </div>
 </form>
 {% endblock %}
