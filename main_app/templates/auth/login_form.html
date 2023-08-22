@@ -3,11 +3,21 @@
 <p class="red-text">{{ error_message }}</p>
 
 <form method="POST" action="{% url 'login' %}">
-    {% csrf_token %}
-    <div class="container logging">
-        {{form.username}}
-        {{form.password}}
-        <button type="submit" class="btn">Log In</button>
-    </div>
+  {% csrf_token %}
+  <div class="container logging">
+    <input
+      type="text"
+      class="username"
+      name="username"
+      placeholder="Username"
+    />
+    <input
+      type="text"
+      class="password"
+      name="password"
+      placeholder="Password"
+    />
+    <button type="submit" class="btn">Log In</button>
+  </div>
 </form>
 {% endblock %}
