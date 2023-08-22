@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(193, 191, 191, 0.808);
+  background-color: #FAFAFA;
   font-family: "Roboto", sans-serif;
   min-height: 100vh;
 }
@@ -12,17 +12,16 @@ body {
   background-color: #5c71e8;
 }
 
-.credentials,
-.logging {
-  display: grid;
-  grid-gap: 10px;
-  max-width: 350px;
-  margin-top: 170px;
-  border: 3px solid black; /* Add a border with a color */
-  border-radius: 30px;
-  background-color: #bab0e8;
-  padding-top: 30px;
-  padding-bottom: 30px;
+.credentials, .logging {
+    display: grid;
+    grid-gap: 10px;
+    max-width: 350px;
+    margin-top: 170px;
+    border: 3px solid black; /* Add a border with a color */
+    border-radius: 30px;
+    background-color: #7E8BDA;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 input.first-name,
@@ -39,9 +38,9 @@ footer.page-footer {
   background-color: #5c71e8;
 }
 
-input.btn {
-  background-color: #5e2fac;
-  color: white;
-  max-width: 100px;
-  margin: 0 auto;
+button.btn {
+    background-color: #3929c6;
+    color: white;
+    max-width: 100px;
+    margin: 0 auto;
 }
