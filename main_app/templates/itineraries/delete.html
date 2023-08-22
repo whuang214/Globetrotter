@@ -3,10 +3,12 @@
 <h3>Confirm Deletion</h3>
 
   <p>Are you sure you want to delete the itinerary "{{ itinerary.title }}"?</p>
-  <form method="post">
+  <form method="POST">
+   
     {% csrf_token %}
-    <button type="submit" class="btn red">Delete</button>
-    <a href="{% url 'index' %}" class="btn">Cancel</a>
+    <input type="submit" value="Yes - Delete!" class="btn">
+    <a href="{% url 'delete_itinerary' itinerary.id %}">Cancel</a>
+    
   </form>
 
 {% endblock %}

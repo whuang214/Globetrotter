@@ -8,6 +8,10 @@
   <p>{{ itinerary.start_date }}</p>
   <p>{{ itinerary.end_date }}</p>
   <p>{{ itinerary.notes }}</p>
-  
+
+</div>
+<div class="card-action">
+  <a href="{% url 'update_itinerary' itinerary.pk %}">Update Itinerary</a>
+  <a href="{% url 'delete_itinerary' itinerary.pk %}">Delete Itinerary</a>
 </div>
 {% endblock %}
