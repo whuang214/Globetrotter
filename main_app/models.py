@@ -18,9 +18,9 @@ class TravelItinerary(models.Model):
     users = models.ManyToManyField(User)
     title = models.CharField(max_length=100)
     start_date = models.DateField()
-    end_date = models.DateField
+    end_date = models.DateField()
     location = models.CharField(max_length=100)
-    notes = models.TextField()
+    notes = models.TextField(blank=True)
 
     def __str__(self):
         return f"{self.title} ({self.id})"
