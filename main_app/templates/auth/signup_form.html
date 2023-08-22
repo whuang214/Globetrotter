@@ -10,9 +10,6 @@
     </div>
     <div class="col-md-8">
       <div class="card mt-0">
-        <div class="card-header bg-primary text-white">
-          <h3 class="text-center">Sign Up</h3>
-        </div>
         <!-- prettier-ignore -->
         <div class="card-body" style="max-height: 70vh; overflow-y: auto;">
           <form method="POST" action="{% url 'signup' %}">
@@ -33,7 +30,9 @@
               {% endif %}
             </div>
             {% endfor %}
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-long">Sign Up</button>
+            </div>
           </form>
         </div>
         <!-- prettier-ignore-end -->

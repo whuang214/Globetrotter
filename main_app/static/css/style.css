@@ -40,7 +40,11 @@ footer.page-footer {
 }
 
 button.btn {
-  color: white;
-  max-width: 100px;
+  background-color: rgb(92, 47, 206);
   margin: 0 auto;
+  color: white;
+}
+
+.btn-long {
+    width: 200px;
 }
