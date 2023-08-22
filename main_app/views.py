@@ -48,6 +48,11 @@ class LoginView(LoginView):
         return context
 
 
+class LogoutView(LogoutView):
+    template_name = "auth/logout_form.html"
+    success_url = reverse_lazy("home")
+
+
 # GET request will render the template
 class ItineraryIndex(ListView):
     model = TravelItinerary
@@ -93,8 +98,3 @@ class ItineraryDelete(DeleteView):
     model = TravelItinerary
     template_name = "itineraries/delete.html"
     success_url = reverse_lazy("index")
-
-
-class LogoutView(LogoutView):
-    template_name = "auth/logout_form.html"
-    success_url = reverse_lazy("home")
