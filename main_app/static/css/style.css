@@ -5,7 +5,7 @@ body {
 }
 
 .navbar-brand {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .navbar-dark {
@@ -24,17 +24,18 @@ body {
     padding-bottom: 30px;
 }
 
-input.first-name, input.last-name {
-    max-width: 150px;
+input.first-name,
+input.last-name {
+  max-width: 150px;
 }
 
 .name-inputs {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 footer.page-footer {
-    background-color: #5c71e8;
+  background-color: #5c71e8;
 }
 
 button.btn {

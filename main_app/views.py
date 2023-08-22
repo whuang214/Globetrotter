@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # models imports
@@ -50,3 +51,49 @@ class LoginView(LoginView):
 class LogoutView(LogoutView):
     template_name = "auth/logout_form.html"
     success_url = reverse_lazy("home")
+
+
+# GET request will render the template
+class ItineraryIndex(ListView):
+    model = TravelItinerary
+    template_name = "itineraries/index.html"
+    context_object_name = "itineraries"
+
+    # set the queryset to return only the itineraries for the currently logged in user
+    def get_queryset(self):
+        # Get the user from the URL parameter or session
+        user = self.request.user
+
+        # Filter items based on the user
+        queryset = TravelItinerary.objects.filter(users=user)
+        return queryset
+
+
+class ItineraryDetail(DetailView):
+    model = TravelItinerary
+    template_name = "itineraries/detail.html"
+    context_object_name = "itinerary"
+
+
+class ItineraryCreate(CreateView):
+    model = TravelItinerary
+    template_name = "itineraries/create.html"
+    fields = ["title", "start_date", "end_date", "location", "notes"]
+    success_url = reverse_lazy("index_itinerary")
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class ItineraryUpdate(UpdateView):
+    model = TravelItinerary
+    template_name = "itineraries/update.html"
+    fields = "__all__"
+    success_url = reverse_lazy("index")
+
+
+class ItineraryDelete(DeleteView):
+    model = TravelItinerary
+    template_name = "itineraries/delete.html"
+    success_url = reverse_lazy("index")
