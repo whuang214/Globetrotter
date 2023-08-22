@@ -1,8 +1,45 @@
 body {
-  background-color: #f5f5f5;
+  background-color: rgba(193, 191, 191, 0.808);
   font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+}
+
+.navbar-brand {
+    font-size: 50px;
 }
 
 .navbar-dark {
   background-color: #5c71e8;
+}
+
+.credentials, .logging {
+    display: grid;
+    grid-gap: 10px;
+    max-width: 350px;
+    margin-top: 170px;
+    border: 3px solid black; /* Add a border with a color */
+    border-radius: 30px;
+    background-color: #BAB0E8;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+input.first-name, input.last-name {
+    max-width: 150px;
+}
+
+.name-inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer.page-footer {
+    background-color: #5c71e8;
+}
+
+input.btn {
+    background-color: #5E2FAC;
+    color: white;
+    max-width: 100px;
+    margin: 0 auto;
 }
