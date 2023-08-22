@@ -6,14 +6,16 @@
 <form method="POST" action="{% url 'signup' %}">
   {% csrf_token %}
   <div class="container credentials">
-    <div class="name-inputs">
-        <input type="text" class="first-name" name="firstname" placeholder="First Name"/>
-        <input type="text" class="last-name" name="lastname" placeholder="Last Name"/>
+    <div class="card-body mx-7 mx-md-8"></div>
+        <div class="name-inputs">
+            <input type="text" class="first-name form-control form-control-lg" name="firstname" placeholder="First Name"/>
+            <input type="text" class="last-name" name="lastname" placeholder="Last Name"/>
+        </div>
+        <input type="text" class="username" name="username" placeholder="Username"/>
+        <input type="text" class="password" name="password" placeholder="Password"/>
+        <input type="text" class="confirm-password" name="confirmpassword" placeholder="Confirm Password"/>
+        <button class="btn" type="button">Sign Up</button>
     </div>
-    <input type="text" class="username" name="username" placeholder="Username"/>
-    <input type="text" class="password" name="password" placeholder="Password"/>
-    <input type="text" class="confirm-password" name="confirmpassword" placeholder="Confirm Password"/>
-    <button class="btn" type="button">Sign Up</button>
   </div>
 </form>
 <!-- prettier-ignore-end -->
