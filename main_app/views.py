@@ -154,10 +154,11 @@ class ItineraryUpdate(UpdateView):
     model = TravelItinerary
     template_name = "itineraries/update.html"
     fields = "__all__"
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("index_itinerary")
 
 
 class ItineraryDelete(DeleteView):
     model = TravelItinerary
     template_name = "itineraries/delete.html"
-    success_url = reverse_lazy("index")
+    context_object_name = "itinerary"
+    success_url = reverse_lazy("index_itinerary")
