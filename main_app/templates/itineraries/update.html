@@ -1,7 +1,10 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
+
 <h3>Edit Itinerary</h3>
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit" class="btn">Update Itinerary</button>
-</form>
-{% endblock %}
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn">Update Itinerary</button>
+  </form>
+
+  {% endblock %}
