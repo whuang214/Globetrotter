@@ -1,45 +1,46 @@
 body {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   font-family: "Roboto", sans-serif;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .navbar-brand {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .navbar-dark {
   background-color: #5c71e8;
 }
 
-.credentials, .logging {
-    display: grid;
-    grid-gap: 10px;
-    /* max-width: 350px; */
-    margin-top: 170px;
-    border: 3px solid black; /* Add a border with a color */
-    border-radius: 30px;
-    background-color: #7E8BDA;
-    padding-top: 30px;
-    padding-bottom: 30px;
+.credentials,
+.logging {
+  display: grid;
+  grid-gap: 10px;
+  max-width: 350px;
+  margin-top: 170px;
+  border: 3px solid black; /* Add a border with a color */
+  border-radius: 30px;
+  background-color: #7e8bda;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-input.first-name, input.last-name {
-    max-width: 150px;
+input.first-name,
+input.last-name {
+  max-width: 150px;
 }
 
 .name-inputs {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 footer.page-footer {
-    background-color: #5c71e8;
+  background-color: #5c71e8;
 }
 
 button.btn {
-    background-color: #3929c6;
-    color: white;
-    max-width: 100px;
-    margin: 0 auto;
+  color: white;
+  max-width: 100px;
+  margin: 0 auto;
 }
