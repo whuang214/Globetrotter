@@ -1,23 +1,37 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load widget_tweaks %} {% block content %}
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <!-- prettier-ignore -->
+          <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {% if field.field.widget.input_type == 'date' %}
+                {{ field | add_class:'form-control datepicker' }}
+              {% else %}
+                {{ field | add_class:'form-control' }}
+              {% endif %}
+            </div>
+            {% endfor %}
 
-{% block content %}
+            <input type="submit" value="Submit!" class="btn btn-primary" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-{% if object %}
-  <h1>Edit <span class="teal-text">{{ object.title }}</span></h1>
-{% else %}
-  <h1>Add Trip</h1>
-{% endif %}
-
-
-<!-- Leaving the action empty makes the form post to the same url used to display it -->
-<form action="" method="POST">
-  <!-- Django requires the following for security purposes -->
-  {% csrf_token %}
-  <table>
-    <!-- Render the inputs inside of <tr>s & <td>s -->
-    {{ form.as_table }}
-  </table>
-  <input type="submit" value="Submit!" class="btn">
-</form>
-
+<script>
+  // prettier-ignore
+  $(document).ready(function() {
+    $('.datepicker').datepicker({
+      format: 'yyyy-mm-dd' // Adjust the desired date format
+    });
+  });
+</script>
 {% endblock %}
