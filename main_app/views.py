@@ -93,7 +93,7 @@ class ItineraryDetail(DetailView):
 class ItineraryCreate(CreateView):
     model = TravelItinerary
     template_name = "itineraries/create.html"
-    fields = ["title", "start_date", "end_date", "location", "notes"]
+    fields = ["title", "start_date", "end_date", "location"]
     success_url = reverse_lazy("index_itinerary")
 
     # override the get_form method to add the datepicker attribute to the date fields
@@ -124,12 +124,6 @@ class ItineraryCreate(CreateView):
         form.fields["location"].widget.attrs.update(
             {
                 "placeholder": "Enter Location",
-                "class": "form-control",
-            }
-        )
-        form.fields["notes"].widget.attrs.update(
-            {
-                "placeholder": "Enter Notes",
                 "class": "form-control",
             }
         )
