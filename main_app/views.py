@@ -82,7 +82,9 @@ class ItineraryCreate(CreateView):
     success_url = reverse_lazy("index_itinerary")
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        itinerary = form.save(commit=False)
+        itinerary.save()
+        itinerary.users.add(self.request.user)
         return super().form_valid(form)
 
 

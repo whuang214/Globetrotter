@@ -5,9 +5,9 @@
 <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
     <div class="container logging">
-        <input type="text" class="username" name="username" placeholder="Username"/>
-        <input type="text" class="password" name="password" placeholder="Password"/>
-        <button type="button" class="btn">Log In</button>
+        {{form.username}}
+        {{form.password}}
+        <button type="submit" class="btn">Log In</button>
     </div>
 </form>
 {% endblock %}
