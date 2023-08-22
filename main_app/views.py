@@ -65,7 +65,7 @@ class ItineraryIndex(ListView):
         user = self.request.user
 
         # Filter items based on the user
-        queryset = TravelItinerary.objects.filter(user=user)
+        queryset = TravelItinerary.objects.filter(users=user)
         return queryset
 
 
@@ -78,13 +78,12 @@ class ItineraryDetail(DetailView):
 class ItineraryCreate(CreateView):
     model = TravelItinerary
     template_name = "itineraries/create.html"
-    fields = "__all__"
-    success_url = reverse_lazy("index")
+    fields = ["title", "start_date", "location", "notes"]
+    success_url = reverse_lazy("index_itinerary")
 
-    # TODO - set the user field to the currently logged in user
-    # def form_valid(self, form):
-    #     form.instance.user = self.request.user
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class ItineraryUpdate(UpdateView):

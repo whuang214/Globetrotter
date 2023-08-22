@@ -48,10 +48,14 @@
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a href="" class="nav-link">Add Itinerary</a>
+              <a href="{% url 'create_itinerary' %}" class="nav-link"
+                >Add Itinerary</a
+              >
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link">Show Itineraries</a>
+              <a href="{% url 'index_itinerary' %}" class="nav-link"
+                >Show Itineraries</a
+              >
             </li>
             <li class="nav-item">
               <a href="{% url 'logout' %}" class="nav-link">Logout</a>

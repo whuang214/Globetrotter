@@ -4,18 +4,22 @@
 </div>
 
 <div class="row">
-  {% for itinerary in itineraries %}
+  {% if itineraries %} {% for itinerary in itineraries %}
   <div class="col s12 m6">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{ itinerary.name }}</span>
-        <p>{{ itinerary.description }}</p>
+        <span class="card-title">{{ itinerary.title }}</span>
+        <p>{{ itinerary.location }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'itinerary-detail' itinerary.pk %}">View Details</a>
+        <a href="{% url 'index_itinerary' itinerary.pk %}">View Details</a>
       </div>
     </div>
   </div>
-  {% endfor %}
+  {% endfor %} {% else %}
+  <div class="col s12">
+    <p>No itineraries available.</p>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}
