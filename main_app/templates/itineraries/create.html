@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load widget_tweaks %} {% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -10,11 +10,7 @@
             {% for field in form %}
             <div class="form-group">
               <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-              {% if field.field.widget.input_type == 'date' %}
-                {{ field | add_class:'form-control datepicker' }}
-              {% else %}
-                {{ field | add_class:'form-control' }}
-              {% endif %}
+              {{ field }}
             </div>
             {% endfor %}
 
@@ -27,10 +23,9 @@
 </div>
 
 <script>
-  // prettier-ignore
-  $(document).ready(function() {
-    $('.datepicker').datepicker({
-      format: 'yyyy-mm-dd' // Adjust the desired date format
+  $(document).ready(function () {
+    $(".datepicker").datepicker({
+      format: "yyyy-mm-dd",
     });
   });
 </script>

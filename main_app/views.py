@@ -96,6 +96,46 @@ class ItineraryCreate(CreateView):
     fields = ["title", "start_date", "end_date", "location", "notes"]
     success_url = reverse_lazy("index_itinerary")
 
+    # override the get_form method to add the datepicker attribute to the date fields
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
+        # Adding attributes to the end_date widget using attrs
+        form.fields["title"].widget.attrs.update(
+            {
+                "placeholder": "Enter Title",
+                "class": "form-control",
+            }
+        )
+        form.fields["start_date"].widget.attrs.update(
+            {
+                "placeholder": "Enter Start Date",
+                "data-provide": "datepicker",
+                "class": "form-control",
+            }
+        )
+
+        form.fields["end_date"].widget.attrs.update(
+            {
+                "placeholder": "Enter End Date",
+                "data-provide": "datepicker",
+                "class": "form-control",
+            }
+        )
+        form.fields["location"].widget.attrs.update(
+            {
+                "placeholder": "Enter Location",
+                "class": "form-control",
+            }
+        )
+        form.fields["notes"].widget.attrs.update(
+            {
+                "placeholder": "Enter Notes",
+                "class": "form-control",
+            }
+        )
+        return form
+
+    # override the form_valid method to add the user to the itinerary
     def form_valid(self, form):
         # doesnt work because user attribute does not exist on the itinerary model.
         # The itinerary model has a users (array) not a user (single user)
