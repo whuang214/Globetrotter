@@ -1,14 +1,49 @@
 {% extends 'base.html' %} {% block content %}
-
-<p class="red-text">{{ error_message }}</p>
-
-<!-- prettier-ignore -->
-<form method="POST" action="{% url 'signup' %}">
-  {% csrf_token %}
-  <div class="container credentials">
-    <div class="name-inputs">
-        <input type="text" class="first-name" name="firstname" placeholder="First Name"/>
-        <input type="text" class="last-name" name="lastname" placeholder="Last Name"/>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          <h3 class="mb-0">Sign Up</h3>
+        </div>
+        <!-- prettier-ignore-start -->
+        <div class="card-body">
+          <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <p class="red-text">{{ error_message }}</p>
+            </div>
+            <div class="form-group">
+              <label for="{{ form.username.id_for_label }}">Username</label>
+              {{ form.username }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.first_name.id_for_label }}">First Name</label>
+              {{ form.first_name }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+              {{ form.last_name }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.email.id_for_label }}">Email</label>
+              {{ form.email }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.password1.id_for_label }}">Password</label>
+              {{ form.password1 }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.password2.id_for_label }}"
+                >Confirm Password</label
+              >
+              {{ form.password2 }}
+            </div>
+            <button type="submit" class="btn btn-success">Sign Up</button>
+          </form>
+        </div>
+        <!-- prettier-ignore-end -->
+      </div>
     </div>
     <input type="text" class="username" name="username" placeholder="Username"/>
     <input type="text" class="password" name="password" placeholder="Password"/>
