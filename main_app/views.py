@@ -78,7 +78,7 @@ class ItineraryDetail(DetailView):
 class ItineraryCreate(CreateView):
     model = TravelItinerary
     template_name = "itineraries/create.html"
-    fields = ["title", "start_date", "location", "notes"]
+    fields = ["title", "start_date", "end_date", "location", "notes"]
     success_url = reverse_lazy("index_itinerary")
 
     def form_valid(self, form):
