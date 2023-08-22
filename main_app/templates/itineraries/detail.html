@@ -1,7 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 <div>
-  <h3>{{ itinerary.title }}</h3>
-  <p>{{ itinerary.location }}</p>
+  
   <!-- Display other itinerary details here -->
+  <h3>{{ itinerary.title }}</h3>
+  <h4>{{ itinerary.user }}</h4>
+  <p>{{ itinerary.location }}</p>
+  <p>{{ itinerary.start_date }}</p>
+  <p>{{ itinerary.end_date }}</p>
+  <p>{{ itinerary.notes }}</p>
+  
 </div>
 {% endblock %}
