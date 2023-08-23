@@ -24,7 +24,7 @@ class TravelItinerary(models.Model):
 
 
 class Activity(models.Model):
-    activity_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     category = models.CharField(
         max_length=1, choices=CATEGORIES, default=CATEGORIES[0][0]
     )
