@@ -2,9 +2,7 @@
 
 <h3>Delete Activity</h3>
 
-<p>
-  Are you sure you want to delete the activity "{{ activity.name }}"?
-</p>
+<p>Are you sure you want to delete the activity "{{ activity.name }}"?</p>
 <form method="POST">
   {% csrf_token %}
   <input type="submit" value="Yes - Delete!" class="btn" />
