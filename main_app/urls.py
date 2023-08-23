@@ -27,17 +27,17 @@ urlpatterns = [
         name="delete_itinerary",
     ),
     path(
-        "itineraries/<int:itinerary_pk>/activities/create",
+        "itineraries/<int:itinerary_id>/activities/create",
         views.ActivityCreate.as_view(),
         name="create_activity",
     ),
     path(
-        "itineraries/<int:itinerary_pk>/activities/<int:activity_pk>/update",
+        "itineraries/<int:itinerary_id>/activities/<int:activity_id>/update",
         views.ActivityUpdate.as_view(),
         name="update_activity",
     ),
     path(
-        "itineraries/<int:itinerary_pk>/activities/<int:activity_pk>/delete",
+        "itineraries/<int:itinerary_id>/activities/<int:activity_id>/delete",
         views.ActivityDelete.as_view(),
         name="delete_activity",
     ),

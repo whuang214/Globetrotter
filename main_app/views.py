@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -163,6 +163,20 @@ class ActivityCreate(CreateView):
     template_name = "activities/create.html"
     fields = ["activity_name", "category", "date_time", "location"]
 
+    def form_valid(self, form):
+        # Get the itinerary_pk from the URL
+        itinerary_id = self.kwargs["itinerary_id"]
+
+        # Get the travel itinerary instance
+        travel_itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+
+        # Set the travel itinerary for the activity
+        activity = form.save(commit=False)
+        activity.travelItinerary = travel_itinerary
+        activity.save()
+
+        return redirect("detail_itinerary", pk=itinerary_id)
+
 
 class ActivityUpdate(UpdateView):
     model = Activity
@@ -170,14 +184,32 @@ class ActivityUpdate(UpdateView):
     context_object_name = "activity"
     fields = "__all__"
 
-    def get_success_url(self):
-        return reverse(
-            "itinerary_detail", kwargs={"itinerary_id": self.object.travelItinerary.id}
+    def get_object(self, queryset=None):
+        itinerary_id = self.kwargs.get("itinerary_id")
+        activity_id = self.kwargs.get("activity_id")
+        activity = get_object_or_404(
+            Activity, id=activity_id, travelItinerary_id=itinerary_id
         )
+        return activity
+
+    def get_success_url(self):
+        itinerary_id = self.kwargs.get("itinerary_id")
+        return reverse("itinerary_detail", kwargs={"itinerary_id": itinerary_id})
 
 
 class ActivityDelete(DeleteView):
     model = Activity
     template_name = "activities/delete.html"
     context_object_name = "activity"
-    success_url = reverse_lazy("index_itinerary")
+
+    def get_object(self, queryset=None):
+        itinerary_id = self.kwargs.get("itinerary_id")
+        activity_id = self.kwargs.get("activity_id")
+        activity = get_object_or_404(
+            Activity, id=activity_id, travelItinerary_id=itinerary_id
+        )
+        return activity
+
+    def get_success_url(self):
+        itinerary_id = self.kwargs.get("itinerary_id")
+        return reverse("itinerary_detail", kwargs={"itinerary_id": itinerary_id})
