@@ -33,7 +33,7 @@
           {% for activity in itinerary.activity_set.all %}
           <div class="card mb-2">
             <div class="card-body">
-              <h5 class="card-title">{{ activity.activity_name }}</h5>
+              <h5 class="card-title">{{ activity.name }}</h5>
               <p class="card-text">{{ activity.date_time }}</p>
               <p class="card-text">{{ activity.location }}</p>
               <div class="d-flex justify-content-between">

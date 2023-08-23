@@ -161,7 +161,7 @@ class ItineraryDelete(DeleteView):
 class ActivityCreate(CreateView):
     model = Activity
     template_name = "activities/create.html"
-    fields = ["activity_name", "category", "date_time", "location"]
+    fields = ["name", "category", "date_time", "location"]
 
     def form_valid(self, form):
         # Get the itinerary_pk from the URL
@@ -194,7 +194,7 @@ class ActivityUpdate(UpdateView):
 
     def get_success_url(self):
         itinerary_id = self.kwargs.get("itinerary_id")
-        return reverse("itinerary_detail", kwargs={"itinerary_id": itinerary_id})
+        return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
 
 
 class ActivityDelete(DeleteView):
@@ -212,4 +212,4 @@ class ActivityDelete(DeleteView):
 
     def get_success_url(self):
         itinerary_id = self.kwargs.get("itinerary_id")
-        return reverse("itinerary_detail", kwargs={"itinerary_id": itinerary_id})
+        return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
