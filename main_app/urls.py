@@ -27,12 +27,18 @@ urlpatterns = [
         name="delete_itinerary",
     ),
     path(
-        "itineraries/<int:itinerary_pk>/activities/<int:activity_pk>/create", views.ActivityCreate.as_view(), name="create_activity",
+        "itineraries/<int:itinerary_pk>/activities/create",
+        views.ActivityCreate.as_view(),
+        name="create_activity",
     ),
     path(
-        "itineraries/<int:itinerary_pk>/activities/<int:activity_pk>/update", views.ActivityUpdate.as_view(), name="update_activity",
+        "itineraries/<int:itinerary_pk>/activities/<int:activity_pk>/update",
+        views.ActivityUpdate.as_view(),
+        name="update_activity",
     ),
     path(
-        "itineraries/<int:itinerary_pk>/activities/<int:activity_pk>/delete", views.ActivityDelete.as_views(), name="delete_activity",
+        "itineraries/<int:itinerary_pk>/activities/<int:activity_pk>/delete",
+        views.ActivityDelete.as_view(),
+        name="delete_activity",
     ),
 ]
