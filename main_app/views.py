@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # models imports
-from .models import TravelItinerary
+from .models import TravelItinerary, Activity
 from .forms import CustomUserCreationForm
 
 # auth imports
@@ -155,4 +155,29 @@ class ItineraryDelete(DeleteView):
     model = TravelItinerary
     template_name = "itineraries/delete.html"
     context_object_name = "itinerary"
+    success_url = reverse_lazy("index_itinerary")
+
+
+class ActivityCreate(CreateView):
+    model = Activity
+    template_name = "activities/create.html"
+    fields = ["activity_name", "category", "date_time", "location"]
+
+
+class ActivityUpdate(UpdateView):
+    model = Activity
+    template_name = "activities/update.html"
+    context_object_name = "activity"
+    fields = "__all__"
+
+    def get_success_url(self):
+        return reverse(
+            "itinerary_detail", kwargs={"itinerary_id": self.object.travelItinerary.id}
+        )
+
+
+class ActivityDelete(DeleteView):
+    model = Activity
+    template_name = "activities/delete.html"
+    context_object_name = "activity"
     success_url = reverse_lazy("index_itinerary")
