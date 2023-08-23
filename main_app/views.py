@@ -213,6 +213,3 @@ class ActivityDelete(DeleteView):
     def get_success_url(self):
         itinerary_id = self.kwargs.get("itinerary_id")
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
-
-
-
