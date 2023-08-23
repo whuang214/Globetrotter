@@ -12,6 +12,11 @@ body {
   background-color: #5c71e8;
 }
 
+.ticket {
+    width: 700px;
+    border-radius: 10px;
+}
+
 .credentials,
 .logging {
   display: grid;
@@ -30,21 +35,27 @@ input.last-name {
   max-width: 150px;
 }
 
-.name-inputs {
-  display: flex;
-  justify-content: space-between;
-}
-
 footer.page-footer {
   background-color: #5c71e8;
 }
 
-button.btn {
+button.btn, input.btn {
   background-color: rgb(92, 47, 206);
+  border: 1rem rgb(92, 47, 206);
   margin: 0 auto;
   color: white;
 }
 
 .btn-long {
     width: 200px;
+}
+
+label {
+    margin: 10px 0px 0px 110px;
+}
+
+#id_username, #id_password {
+    width: 350px;
+    margin-left: 110px;
+    padding: 0px 12px;
 }
