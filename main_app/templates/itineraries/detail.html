@@ -1,17 +1,29 @@
 {% extends 'base.html' %} {% block content %}
-<div>
+
+<div class="container">
+  <!-- Content here -->
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
   
   <!-- Display other itinerary details here -->
-  <h3>{{ itinerary.title }}</h3>
-  <h4>{{ itinerary.user }}</h4>
-  <p>{{ itinerary.location }}</p>
-  <p>{{ itinerary.start_date }}</p>
-  <p>{{ itinerary.end_date }}</p>
-  <p>{{ itinerary.notes }}</p>
+    <h3>{{ itinerary.title }}</h3>
+    <h4>{{ itinerary.user }}</h4>
+    <p>{{ itinerary.location }}</p>
+    <p>{{ itinerary.start_date }}</p>
+    <p>{{ itinerary.end_date }}</p>
+    <p>{{ itinerary.notes }}</p>
 
-</div>
-<div class="card-action">
-  <a href="{% url 'update_itinerary' itinerary.pk %}">Update Itinerary</a>
-  <a href="{% url 'delete_itinerary' itinerary.pk %}">Delete Itinerary</a>
+  </div>
+  <div class="card-action">
+    <a href="{% url 'update_itinerary' itinerary.pk %}">Update Itinerary</a>
+    <a href="{% url 'delete_itinerary' itinerary.pk %}">Delete Itinerary</a>
+  </div>
 </div>
 {% endblock %}
