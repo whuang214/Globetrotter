@@ -1,29 +1,66 @@
 {% extends 'base.html' %} {% block content %}
+<div>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-9">
+        <!-- Main content -->
+        <h1>{{ itinerary.title }}</h1>
+        <p>Start Date: {{ itinerary.start_date }}</p>
+        <p>End Date: {{ itinerary.end_date }}</p>
+        <p>Location: {{ itinerary.location }}</p>
+        <p>Notes: {{ itinerary.notes }}</p>
+        <p>Linked Users:</p>
+        <ul>
+          {% for user in itinerary.users.all %}
+          <li>{{ user.username }}</li>
+          {% endfor %}
+        </ul>
 
-<div class="container">
-  <!-- Content here -->
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
+        <a
+          href="{% url 'update_itinerary' itinerary.id %}"
+          class="btn btn-primary"
+          >Update</a
+        >
+        <a
+          href="{% url 'delete_itinerary' itinerary.id %}"
+          class="btn btn-danger"
+          >Delete</a
+        >
+      </div>
+      <div class="col-md-3">
+        <div class="list-group">
+          <h4>Activities</h4>
+          {% for activity in itinerary.activity_set.all %}
+          <div class="card mb-2">
+            <div class="card-body">
+              <h5 class="card-title">{{ activity.name }}</h5>
+              <p class="card-text">{{ activity.date_time }}</p>
+              <p class="card-text">{{ activity.location }}</p>
+              <div class="d-flex justify-content-between">
+                <a
+                  href="{% url 'update_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
+                  class="btn btn-sm btn-primary"
+                  >Edit</a
+                >
+                <a
+                  href="{% url 'delete_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
+                  class="btn btn-sm btn-danger"
+                  >Delete</a
+                >
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <p>No activities yet.</p>
+          {% endfor %}
         </div>
+        <a
+          href="{% url 'create_activity' itinerary_id=itinerary.id %}"
+          class="btn btn-primary"
+          >Add Activity</a
+        >
       </div>
     </div>
-  </div>
-  <div>
-  
-  <!-- Display other itinerary details here -->
-    <h3>{{ itinerary.title }}</h3>
-    <h4>{{ itinerary.user }}</h4>
-    <p>{{ itinerary.location }}</p>
-    <p>{{ itinerary.start_date }}</p>
-    <p>{{ itinerary.end_date }}</p>
-    <p>{{ itinerary.notes }}</p>
-
-  </div>
-  <div class="card-action">
-    <a href="{% url 'update_itinerary' itinerary.pk %}">Update Itinerary</a>
-    <a href="{% url 'delete_itinerary' itinerary.pk %}">Delete Itinerary</a>
   </div>
 </div>
 {% endblock %}

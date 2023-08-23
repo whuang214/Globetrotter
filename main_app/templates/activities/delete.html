@@ -1,14 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Confirm Deletion</h3>
+<h3>Delete Activity</h3>
 
-<p>
-  Are you sure you want to delete the activity "{{ activity.activity_name }}"?
-</p>
+<p>Are you sure you want to delete the activity "{{ activity.name }}"?</p>
 <form method="POST">
   {% csrf_token %}
   <input type="submit" value="Yes - Delete!" class="btn" />
-  <a href="{% url 'delete_activity' activity.id %}">Cancel</a>
+  <a href="{% url 'detail_itinerary' activity.id %}">Cancel</a>
 </form>
 
 {% endblock %}
