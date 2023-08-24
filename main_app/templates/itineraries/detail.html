@@ -32,6 +32,24 @@
                 <p>Notes: {{ itinerary.notes }}</p>
               </div>
             </div>
+            <div>
+              <h5>Flight Info</h5>
+              <a href="{% url 'create_flight' itinerary_id=itinerary.id %}" class="btn btn-primary">Add Flight</a>
+              <table class="striped">
+                <thead>
+                  <tr><th>User</th><th>Flight No</th><th>Arrival Time</th></tr>
+                </thead>
+                <tbody>
+                  {% for flight in itinerary.flight_set.all %}
+                    <tr>
+                      <td>{{ user.username }}</td>
+                      <td>{{ flight.flight }}</td>
+                      <td>{{ flight.arrival_time }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+          </div>
           </div>
 
           <div class="col s6">
@@ -77,6 +95,7 @@
               </div>
             </div>
           </div>
+         
         </div>
         <a href="{% url 'update_itinerary' itinerary.id %}" class="btn"
           >Update</a
