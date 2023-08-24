@@ -166,17 +166,18 @@ class ItineraryDelete(DeleteView):
 class ActivityCreate(CreateView):
     model = Activity
     template_name = "activities/create.html"
-    fields = ["name", "category", "date_time", "location"]
+    fields = ["name", "category", "date", "time", "location"]
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
 
-        form.fields["date_time"].widget.input_type = "date"
-        form.fields["date_time"].widget.attrs.update(
-            {
-                "class": "form-control",
-            }
-        )
+        for field_name, field in form.fields.items():
+            field.widget.attrs.update({"class": "form-control"})
+
+            if field_name == "date":
+                field.widget.input_type = "date"
+            elif field_name == "time":
+                field.widget.input_type = "time"
 
         return form
 
