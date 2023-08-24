@@ -240,15 +240,21 @@ class CreateFlight(CreateView):
         return redirect("detail_itinerary", pk=itinerary_id)
 
 
-# def create_flight(request, travelItinerary_id):
-#     form = FlightForm(request.POST)
-#     if form.is_valid():
-#         new_flight = form.save(commit=False)
-#         new_flight.travelItinerary_id = travelItinerary_id
-#         new_flight.save()
-#     return redirect('detail_itinerary', travelItinerary_id=travelItinerary_id)
-
-
 class UpdateFlight(UpdateView):
     model = Flight
-    fields = ["flight", "arrival-time"]
+    template_name = "flights/update.html"
+    context_object_name = "flight"
+    fields = ['flight', 'arrival_time']
+
+    def get_object(self, queryset=None):
+        itinerary_id = self.kwargs.get("itinerary_id")
+        flight_id = self.kwargs.get("flight_id")
+        flight = get_object_or_404(
+            Flight, id=flight_id, travelItinerary_id=itinerary_id
+        )
+        return flight
+
+    def get_success_url(self):
+        itinerary_id = self.kwargs.get("itinerary_id")
+        return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
+

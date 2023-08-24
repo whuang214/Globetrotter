@@ -62,11 +62,13 @@
                 </thead>
                 <tbody>
                   {% for flight in itinerary.flight_set.all %}
-                  <tr>
-                    <td>{{ user.username }}</td>
-                    <td>{{ flight.flight }}</td>
-                    <td>{{ flight.arrival_time }}</td>
-                  </tr>
+                    <tr>
+                      <td>{{ user.username }}</td>
+                      <td>{{ flight.flight }}</td>
+                      <td>{{ flight.arrival_time }}</td>
+                      <a href="{% url 'update_flight' itinerary_id=itinerary.id  flight_id=flight.id %}" class="btn btn-primary">Edit Flight</a>
+                    </tr>
+                  </tbody>
                   {% endfor %}
                 </tbody>
               </table>
