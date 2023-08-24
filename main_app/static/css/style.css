@@ -39,7 +39,7 @@ footer.page-footer {
   background-color: #5c71e8;
 }
 
-button.btn, input.btn {
+button.btn, input.btn, a.btn {
   background-color: rgb(92, 47, 206);
   border: 1rem rgb(92, 47, 206);
   margin: 0 auto;
@@ -58,4 +58,12 @@ label {
     width: 350px;
     margin-left: 110px;
     padding: 0px 12px;
+}
+
+.card-footer {
+    background-color: white;
+}
+
+.detailpage {
+    border: 3px solid black;
 }
