@@ -12,6 +12,12 @@
           <div class="col s6">
             <div class="card">
               <div class="card-text">
+                <p>Hotel:</p>
+              </div>
+            </div>
+            <br>
+            <div class="card">
+              <div class="card-text">
                 <p>Linked Users:</p>
                 <ul>
                   {% for user in itinerary.users.all %}
@@ -33,32 +39,30 @@
               <div class="overflow-auto" style="height: 300px">
                 <div class="card m-2" style="max-width: 540px">
                   <div class="card-header">
-                    <h4>Activities</h4>
-                    <a
-                      href="{% url 'create_activity' itinerary_id=itinerary.id %}"
-                      class="btn btn-primary"
-                      >Add Activity</a
-                    >
+                    <h4>Activities
+                    <a href="{% url 'create_activity' itinerary_id=itinerary.id %}" class="btn add">Add Activity</a>
+                    </h4>
                   </div>
                   <div class="card-body">
                     {% for activity in itinerary.activity_set.all %}
-                    <div class="list-group list-group-light list-group-small">
-                      <h5 class="card-title">{{ activity.name }}</h5>
-                      <p class="card-text">{{ activity.date_time }}</p>
-                      <p class="card-text">{{ activity.location }}</p>
-                      <div class="d-flex justify-content-between">
-                        <a
-                          href="{% url 'update_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
-                          class="btn btn-sm btn-primary"
-                          >Edit</a
-                        >
-                        <a
-                          href="{% url 'delete_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
-                          class="btn btn-sm btn-danger"
-                          >Delete</a
-                        >
-                      </div>
-                    </div>
+                      <ul class="list-group list-group-light list-group-small">
+                        <li class="list-group-item">
+                          <p class="card-title">{{ activity.name }}</p>
+                          <p class="card-text extra">{{ activity.date_time }}</p>
+                          <p class="card-text extra">{{ activity.location }}</p>
+                          <div class="d-grid gap-2 d-md-block">
+                            <a
+                              href="{% url 'update_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
+                              class="btn"
+                              >Edit</a
+                            >
+                            <a
+                              href="{% url 'delete_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
+                              class="btn btn-danger"
+                              >Delete</a
+                            >
+                        </li>
+                      </ul>
                     {% empty %}
                     <p>No activities yet.</p>
                     {% endfor %}
