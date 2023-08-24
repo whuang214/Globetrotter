@@ -43,8 +43,15 @@ button.btn,
 input.btn,
 a.btn {
   background-color: rgb(92, 47, 206);
-  border: 1rem rgb(92, 47, 206);
+  border: 1px rgb(92, 47, 206);
   margin: 0 auto;
+  color: white;
+}
+
+button.btn:hover,
+input.btn:hover,
+a.btn:hover {
+  background-color: rgb(60, 31, 137);
   color: white;
 }
 
@@ -56,19 +63,26 @@ a.btn {
   background-color: white;
 }
 
+/* .detailpage {
+  border: 3px solid black;
+} */
+
+h5 {
+  font-weight: bold;
+  font-size: 0.9rem;
 .detailpage {
     border: 3px solid black;
 }
 
 .list-group {
-    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
-    border-radius: 0;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 0;
 }
 
 p.card-title {
-    font-weight: bold;
-    font-size: large;
-    margin: 0px 0px;
+  font-weight: bold;
+  font-size: large;
+  margin: 0px 0px;
 }
 
 .card-text {
@@ -76,13 +90,18 @@ p.card-title {
 }
 
 a.btn.add {
-    float: right;
+  float: right;
 }
 
 .container.part-2 {
     border: 1px solid red;
     height: 550px;
     overflow-y: scroll;
+}
+
+.banner {
+    background-color: #D6AF6D;
+    padding: 20px 20px 0px 20px;
 }
 
 .banner {

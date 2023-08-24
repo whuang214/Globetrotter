@@ -41,5 +41,13 @@ urlpatterns = [
         views.ActivityDelete.as_view(),
         name="delete_activity",
     ),
+    path(
+        "itineraries/<int:itinerary_id>/flights/create/",
+        views.CreateFlight.as_view(), name="create_flight",
+    ),
+    path(
+        "itineraries/<int:itinerary_id>/flights/<int:flight_id>/update/",
+        views.UpdateFlight.as_view(), name="update_flight",
+    ),
     
 ]

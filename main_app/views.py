@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # models imports
-from .models import TravelItinerary, Activity
+from .models import TravelItinerary, Activity, Flight
 from .forms import CustomUserCreationForm
 
 # auth imports
@@ -88,6 +88,8 @@ class ItineraryDetail(DetailView):
     model = TravelItinerary
     template_name = "itineraries/detail.html"
     context_object_name = "itinerary"
+
+    # add a joined table of users and flights
 
 
 class ItineraryCreate(CreateView):
@@ -204,3 +206,55 @@ class ActivityDelete(DeleteView):
     def get_success_url(self):
         itinerary_id = self.kwargs.get("itinerary_id")
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
+
+
+class CreateFlight(CreateView):
+    model = Flight
+    template_name = "flights/create.html"
+    fields = ["flight", "arrival_time"]
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        for field_name, field in form.fields.items():
+            field.widget.attrs.update({"class": "form-control"})
+
+            if field_name == "arrival_time":
+                field.widget.input_type = "time"
+
+        return form
+
+    def form_valid(self, form):
+        # Get the itinerary_pk from the URL
+        itinerary_id = self.kwargs["itinerary_id"]
+        form.instance.user = self.request.user
+
+        # Get the travel itinerary instance
+        travel_itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+
+        # Set the travel itinerary for the activity
+        flight = form.save(commit=False)
+        flight.travelItinerary = travel_itinerary
+        flight.save()
+
+        return redirect("detail_itinerary", pk=itinerary_id)
+
+
+class UpdateFlight(UpdateView):
+    model = Flight
+    template_name = "flights/update.html"
+    context_object_name = "flight"
+    fields = ['flight', 'arrival_time']
+
+    def get_object(self, queryset=None):
+        itinerary_id = self.kwargs.get("itinerary_id")
+        flight_id = self.kwargs.get("flight_id")
+        flight = get_object_or_404(
+            Flight, id=flight_id, travelItinerary_id=itinerary_id
+        )
+        return flight
+
+    def get_success_url(self):
+        itinerary_id = self.kwargs.get("itinerary_id")
+        return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
+
