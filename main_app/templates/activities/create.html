@@ -1,7 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 <h3>Create Activity</h3>
 <form method="POST">
-  {% csrf_token %} {{ form.as_p }}
+
+  {% csrf_token %} 
+  
+  {{ form.as_p }}
   <button type="submit" class="btn">Create Activity</button>
 </form>
+
 {% endblock %}
