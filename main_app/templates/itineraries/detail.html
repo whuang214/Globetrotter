@@ -8,7 +8,7 @@
   <div class="container detailpage">
     <div class="card">
       <div class="card-header text-center align-items-center">
-        <h1 class="display-4">{{ itinerary.title }}</h1>
+        <h1 class="display-5">{{ itinerary.title }}</h1>
         <p class="lead">Destination: {{ itinerary.location }}</p>
         <p>Date: {{ itinerary.start_date|date:'F d, Y' }} - {{ itinerary.end_date|date:'F d, Y' }}</p>
         <a href="{% url 'update_itinerary' itinerary.id %}" class="btn btn-sm mr-2"
@@ -78,9 +78,16 @@
               </div>
             </div>
             <br />
-            <div class="card">
+            <div class="card" style="max-height: 100px; overflow-y: auto">
+              <div class="card-header">
+                <h5 class="mb-0">Notes:</h5>
+              </div>
               <div class="card-text">
-                <p>Notes: {{ itinerary.notes }}</p>
+                {% if itinerary.notes == '' %}
+                <p class="small p-1">No notes yet.</p>
+                {% else %}
+                <p class="small p-1">{{ itinerary.notes }}</p>
+                {% endif %}
               </div>
             </div>
           </div>
