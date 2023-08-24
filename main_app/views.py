@@ -127,6 +127,12 @@ class ItineraryCreate(CreateView):
                 "class": "form-control",
             }
         )
+        form.fields["hotel"].widget.attrs.update(
+            {
+                "placeholder": "Enter Hotel",
+                "class": "form-control",
+            }
+        )
         return form
 
     # override the form_valid method to add the user to the itinerary
@@ -162,12 +168,13 @@ class ActivityCreate(CreateView):
     model = Activity
     template_name = "activities/create.html"
     fields = ["name", "category", "date_time", "location"]
+
     def get_form(self, form_class=None):
         form = super().get_form(form_class=form_class)
         form.fields["date_time"].widget.attrs.update(
             {
-                "data-provide": "datepicker",
-                "class": "datepicker form-control datetimepicker-input",
+                "class": "form-control",
+                "input" : "datetime"
             }
         )
         return form
@@ -222,3 +229,6 @@ class ActivityDelete(DeleteView):
     def get_success_url(self):
         itinerary_id = self.kwargs.get("itinerary_id")
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
+
+
+
