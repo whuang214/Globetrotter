@@ -240,7 +240,6 @@ class CreateFlight(CreateView):
         return redirect("detail_itinerary", pk=itinerary_id)
 
 
-
 class UpdateFlight(UpdateView):
     model = Flight
     template_name = "flights/update.html"
