@@ -10,18 +10,21 @@
       <div class="card-header text-center align-items-center">
         <h1 class="display-5">{{ itinerary.title }}</h1>
         <p class="lead">Destination: {{ itinerary.location }}</p>
-        <p>Date: {{ itinerary.start_date|date:'F d, Y' }} - {{ itinerary.end_date|date:'F d, Y' }}</p>
-        <a href="{% url 'update_itinerary' itinerary.id %}" class="btn btn-sm mr-2"
+        <p>
+          <!-- prettier-ignore -->
+          Date: {{ itinerary.start_date|date:'F d, Y' }} - {{itinerary.end_date|date:'F d, Y' }}
+        </p>
+        <a
+          href="{% url 'update_itinerary' itinerary.id %}"
+          class="btn btn-sm mr-2"
           >Edit</a
         >
-        <a
-          href="{% url 'delete_itinerary' itinerary.id %}"
-          class="btn btn-sm"
+        <a href="{% url 'delete_itinerary' itinerary.id %}" class="btn btn-sm"
           >Delete</a
         >
       </div>
-      
-      </div>
+
+      {% comment %} Shared User Card {% endcomment %}
       <div class="card-body">
         <div class="row">
           <div class="col s6">
@@ -47,6 +50,7 @@
               </div>
             </div>
             <br />
+            {% comment %} Flight Card {% endcomment %}
             <div class="card-body" style="max-height: 100px; overflow-y: auto">
               <table class="table table-striped table-sm mb-0">
                 <thead>
@@ -67,20 +71,40 @@
                 </tbody>
               </table>
             </div>
+            {% comment %} Hotel Card {% endcomment %}
             <div class="card" style="max-height: 100px; overflow-y: auto">
-              <div class="card-header">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
                 <h5 class="mb-0">Hotel:</h5>
+                {% if itinerary.hotel %}
+                <a href="#" class="btn btn-sm m-0 rounded-pill">Edit</a>
+                {% else %}
+                <a href="#" class="btn btn-sm m-0 rounded-pill">Add</a>
+                {% endif %}
               </div>
               <div class="card-text">
-                {{ itinerary.hotel }}
+                {% if itinerary.hotel %}
+                <p class="small p-1">{{ itinerary.hotel }}</p>
+                {% else %}
+                <p class="small p-1">No hotel yet.</p>
+                {% endif %}
                 <br />
                 Insert Hotel Map Here
               </div>
             </div>
             <br />
+            {% comment %} Notes Card {% endcomment %}
             <div class="card" style="max-height: 100px; overflow-y: auto">
-              <div class="card-header">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
                 <h5 class="mb-0">Notes:</h5>
+                {% if itinerary.notes != '' %}
+                <a href="#" class="btn btn-sm m-0 rounded-pill">Edit</a>
+                {% else %}
+                <a href="#" class="btn btn-sm m-0 rounded-pill">Add</a>
+                {% endif %}
               </div>
               <div class="card-text">
                 {% if itinerary.notes == '' %}
@@ -92,6 +116,7 @@
             </div>
           </div>
 
+          {% comment %} Activities Card {% endcomment %}
           <div class="col s6">
             <div class="container">
               <div class="overflow-auto" style="height: 300px">
