@@ -89,6 +89,8 @@ class ItineraryDetail(DetailView):
     template_name = "itineraries/detail.html"
     context_object_name = "itinerary"
 
+    # add a joined table of users and flights
+
 
 class ItineraryCreate(CreateView):
     model = TravelItinerary
@@ -205,17 +207,18 @@ class ActivityDelete(DeleteView):
         itinerary_id = self.kwargs.get("itinerary_id")
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
 
+
 class CreateFlight(CreateView):
     model = Flight
     template_name = "flights/create.html"
-    fields = ['flight', 'arrival_time']
+    fields = ["flight", "arrival_time"]
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
 
         for field_name, field in form.fields.items():
             field.widget.attrs.update({"class": "form-control"})
-            
+
             if field_name == "arrival_time":
                 field.widget.input_type = "time"
 
@@ -237,7 +240,6 @@ class CreateFlight(CreateView):
         return redirect("detail_itinerary", pk=itinerary_id)
 
 
-
 # def create_flight(request, travelItinerary_id):
 #     form = FlightForm(request.POST)
 #     if form.is_valid():
@@ -246,6 +248,7 @@ class CreateFlight(CreateView):
 #         new_flight.save()
 #     return redirect('detail_itinerary', travelItinerary_id=travelItinerary_id)
 
+
 class UpdateFlight(UpdateView):
     model = Flight
-    fields = ['flight', 'arrival-time']
+    fields = ["flight", "arrival-time"]
