@@ -43,8 +43,15 @@ button.btn,
 input.btn,
 a.btn {
   background-color: rgb(92, 47, 206);
-  border: 1rem rgb(92, 47, 206);
+  border: 1px rgb(92, 47, 206);
   margin: 0 auto;
+  color: white;
+}
+
+button.btn:hover,
+input.btn:hover,
+a.btn:hover {
+  background-color: rgb(60, 31, 137);
   color: white;
 }
 
