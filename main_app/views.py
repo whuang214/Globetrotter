@@ -205,7 +205,6 @@ class ActivityDelete(DeleteView):
         itinerary_id = self.kwargs.get("itinerary_id")
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
 
-
 class CreateFlight(CreateView):
     model = Flight
     template_name = "flights/create.html"
