@@ -169,15 +169,7 @@ class ActivityCreate(CreateView):
     template_name = "activities/create.html"
     fields = ["name", "category", "date_time", "location"]
 
-    def get_form(self, form_class=None):
-        form = super().get_form(form_class=form_class)
-        form.fields["date_time"].widget.attrs.update(
-            {
-                "class": "form-control",
-                "input" : "datetime"
-            }
-        )
-        return form
+    
     def form_valid(self, form):
         # Get the itinerary_pk from the URL
         itinerary_id = self.kwargs["itinerary_id"]

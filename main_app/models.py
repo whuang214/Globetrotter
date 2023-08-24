@@ -31,7 +31,8 @@ class Activity(models.Model):
     category = models.CharField(
         max_length=1, choices=CATEGORIES, default=CATEGORIES[0][0]
     )
-    date_time = models.DateTimeField()
+    date = models.DateField()
+    time = models.TimeField()
     location = models.CharField(max_length=100)
 
     # create a travel_itinerary FK bc one itinerary has many activities
@@ -41,7 +42,7 @@ class Activity(models.Model):
         return f"{self.get_category_display()} {self.activity_name} on {self.date_time} located at {self.location}"
 
     class Meta:
-        ordering = ["date_time",]
+        ordering = ["date", "time"]
 
 
 class Flight(models.Model):

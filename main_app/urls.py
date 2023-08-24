@@ -41,7 +41,5 @@ urlpatterns = [
         views.ActivityDelete.as_view(),
         name="delete_activity",
     ),
-    path(
-        "itineraries/<int:itinerary_id>/flights/<int:flight_id>/create/"
-    )
+    
 ]
