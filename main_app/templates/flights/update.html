@@ -1,0 +1,10 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<h3>Update Flight</h3>
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn">Update Flight</button>
+  </form>
+
+  {% endblock %}
