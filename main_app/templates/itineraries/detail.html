@@ -52,6 +52,7 @@
             <br />
             {% comment %} Flight Card {% endcomment %}
             <div class="card-body">
+              <a href="{% url 'create_flight' itinerary_id=itinerary.id  %}" class="btn btn-primary">Add Flight</a>
               <table class="table table-striped table-sm mb-0">
                 <thead>
                   <tr>
