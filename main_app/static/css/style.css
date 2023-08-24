@@ -60,15 +60,10 @@ label {
     padding: 0px 12px;
 }
 
-.card {
-    border-radius: 100px;
-}
-
-.card-body {
-    background-color: #D6AF6D;
-    color: white;
-}
-
 .card-footer {
     background-color: white;
+}
+
+.detailpage {
+    border: 3px solid black;
 }
