@@ -7,24 +7,18 @@
 <div>
   <div class="container detailpage">
     <div class="card">
-      <div class="card-header text-center d-flex align-items-center">
-        <div class="image-container">
-          <img src="https://via.placeholder.com/300" alt="Placeholder Image" class="img-fluid p-2">
-        </div>
-        <div class="title-container">
-          <h1 class="display-4">{{ itinerary.title }}</h1>
-          <p class="lead">Destination: {{ itinerary.location }}</p>
-          <p>Date: {{ itinerary.start_date|date:'F d, Y' }} - {{ itinerary.end_date|date:'F d, Y' }}</p>
-          <a href="{% url 'update_itinerary' itinerary.id %}" class="btn btn-sm mr-2"
-            >Edit</a
-          >
-          <a
-            href="{% url 'delete_itinerary' itinerary.id %}"
-            class="btn btn-sm"
-            >Delete</a
-          >
-        </div>
-
+      <div class="card-header text-center align-items-center">
+        <h1 class="display-4">{{ itinerary.title }}</h1>
+        <p class="lead">Destination: {{ itinerary.location }}</p>
+        <p>Date: {{ itinerary.start_date|date:'F d, Y' }} - {{ itinerary.end_date|date:'F d, Y' }}</p>
+        <a href="{% url 'update_itinerary' itinerary.id %}" class="btn btn-sm mr-2"
+          >Edit</a
+        >
+        <a
+          href="{% url 'delete_itinerary' itinerary.id %}"
+          class="btn btn-sm"
+          >Delete</a
+        >
       </div>
       
       </div>
@@ -53,14 +47,8 @@
               </div>
             </div>
             <br />
-            <div>
-              <h5>Flight Info</h5>
-              <a
-                href="{% url 'create_flight' itinerary_id=itinerary.id %}"
-                class="btn btn-primary"
-                >Add Flight</a
-              >
-              <table class="striped">
+            <div class="card-body" style="max-height: 100px; overflow-y: auto">
+              <table class="table table-striped table-sm mb-0">
                 <thead>
                   <tr>
                     <th>User</th>
