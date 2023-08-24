@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<div> 
+<div>
   <div class="container detailpage">
     <div class="card">
       <div class="card-header">
@@ -20,7 +20,7 @@
                 </ul>
               </div>
             </div>
-            <br>
+            <br />
             <div class="card">
               <div class="card-text">
                 <p>Notes: {{ itinerary.notes }}</p>
@@ -30,31 +30,35 @@
 
           <div class="col s6">
             <div class="container">
-              <div class="overflow-auto" style="height:300px">
-                <div class="card m-2" style="max-width: 540px;">
+              <div class="overflow-auto" style="height: 300px">
+                <div class="card m-2" style="max-width: 540px">
                   <div class="card-header">
                     <h4>Activities</h4>
-                    <a href="{% url 'create_activity' itinerary_id=itinerary.id %}" class="btn btn-primary">Add Activity</a>
+                    <a
+                      href="{% url 'create_activity' itinerary_id=itinerary.id %}"
+                      class="btn btn-primary"
+                      >Add Activity</a
+                    >
                   </div>
                   <div class="card-body">
                     {% for activity in itinerary.activity_set.all %}
-                      <div class="list-group list-group-light list-group-small">
-                        <h5 class="card-title">{{ activity.name }}</h5>
-                        <p class="card-text">{{ activity.date_time }}</p>
-                        <p class="card-text">{{ activity.location }}</p>
-                        <div class="d-flex justify-content-between">
-                          <a
-                            href="{% url 'update_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
-                            class="btn btn-sm btn-primary"
-                            >Edit</a
-                          >
-                          <a
-                            href="{% url 'delete_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
-                            class="btn btn-sm btn-danger"
-                            >Delete</a
-                          >
-                        </div>
+                    <div class="list-group list-group-light list-group-small">
+                      <h5 class="card-title">{{ activity.name }}</h5>
+                      <p class="card-text">{{ activity.date_time }}</p>
+                      <p class="card-text">{{ activity.location }}</p>
+                      <div class="d-flex justify-content-between">
+                        <a
+                          href="{% url 'update_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
+                          class="btn btn-sm btn-primary"
+                          >Edit</a
+                        >
+                        <a
+                          href="{% url 'delete_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
+                          class="btn btn-sm btn-danger"
+                          >Delete</a
+                        >
                       </div>
+                    </div>
                     {% empty %}
                     <p>No activities yet.</p>
                     {% endfor %}
@@ -64,10 +68,16 @@
             </div>
           </div>
         </div>
-          <a href="{% url 'update_itinerary' itinerary.id %}" class="btn">Update</a>
-          <a href="{% url 'delete_itinerary' itinerary.id %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'update_itinerary' itinerary.id %}" class="btn"
+          >Update</a
+        >
+        <a
+          href="{% url 'delete_itinerary' itinerary.id %}"
+          class="btn btn-danger"
+          >Delete</a
+        >
       </div>
     </div>
-  </div>  
-</div> 
+  </div>
+</div>
 {% endblock %}
