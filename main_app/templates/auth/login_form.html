@@ -8,28 +8,49 @@
     background-size: cover;
     background-position: center;
   }
+
+  label {
+    margin: 10px 0px 0px 110px;
+  }
+
+  #id_username,
+  #id_password {
+    width: 350px;
+    margin-left: 110px;
+    padding: 0px 12px;
+  }
 </style>
 
 <div class="container mt-4 mx-auto">
   <div class="row justify-content-center">
-      <div class="card mt-0 ticket">
-        <!-- prettier-ignore -->
-        <div class="card-body" style="max-height: 70vh; overflow-y: auto;">
+    <div class="card mt-0 ticket">
+      <!-- prettier-ignore -->
+      <div class="card-body" style="max-height: 70vh; overflow-y: auto;">
           <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
-            {% for field in form %}
             <div class="form-group">
-              <label for="{{ field.id_for_label }}" class="text-muted">{{ field.label }}</label>
-              {{ field | add_class:'form-control' }}
-              {% if field.errors %}
+              <label for="{{ form.username.id_for_label }}" class="text-muted">{{ form.username.label }}</label>
+              {{ form.username | add_class:'form-control' }}
+              {% if form.username.errors %}
               <div class="text-danger">
-                {% for error in field.errors %}
+                {% for error in form.username.errors %}
                 {{ error }}
                 {% endfor %}
               </div>
               {% endif %}
             </div>
-            {% endfor %}
+            
+            <div class="form-group">
+              <label for="{{ form.password.id_for_label }}" class="text-muted">{{ form.password.label }}</label>
+              {{ form.password | add_class:'form-control' }}
+              {% if form.password.errors %}
+              <div class="text-danger">
+                {% for error in form.password.errors %}
+                {{ error }}
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-long">Log In</button>
             </div>
@@ -38,8 +59,8 @@
             <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
           </div>
         </div>
-        <!-- prettier-ignore-end -->
-      </div>
+      <!-- prettier-ignore-end -->
+    </div>
   </div>
 </div>
 {% endblock %}

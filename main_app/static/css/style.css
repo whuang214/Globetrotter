@@ -13,8 +13,8 @@ body {
 }
 
 .ticket {
-    width: 700px;
-    border-radius: 10px;
+  width: 700px;
+  border-radius: 10px;
 }
 
 .credentials,
@@ -39,7 +39,9 @@ footer.page-footer {
   background-color: #5c71e8;
 }
 
-button.btn, input.btn, a.btn {
+button.btn,
+input.btn,
+a.btn {
   background-color: rgb(92, 47, 206);
   border: 1rem rgb(92, 47, 206);
   margin: 0 auto;
@@ -47,21 +49,11 @@ button.btn, input.btn, a.btn {
 }
 
 .btn-long {
-    width: 200px;
-}
-
-label {
-    margin: 10px 0px 0px 110px;
-}
-
-#id_username, #id_password {
-    width: 350px;
-    margin-left: 110px;
-    padding: 0px 12px;
+  width: 200px;
 }
 
 .card-footer {
-    background-color: white;
+  background-color: white;
 }
 
 .detailpage {
