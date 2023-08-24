@@ -106,18 +106,17 @@ class ItineraryCreate(CreateView):
                 "class": "form-control",
             }
         )
+        form.fields["start_date"].widget.input_type = "date"
         form.fields["start_date"].widget.attrs.update(
             {
                 "placeholder": "Enter Start Date",
-                "data-provide": "datepicker",
                 "class": "form-control",
             }
         )
-
+        form.fields["end_date"].widget.input_type = "date"
         form.fields["end_date"].widget.attrs.update(
             {
                 "placeholder": "Enter End Date",
-                "data-provide": "datepicker",
                 "class": "form-control",
             }
         )
@@ -169,7 +168,18 @@ class ActivityCreate(CreateView):
     template_name = "activities/create.html"
     fields = ["name", "category", "date_time", "location"]
 
-    
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        form.fields["date_time"].widget.input_type = "date"
+        form.fields["date_time"].widget.attrs.update(
+            {
+                "class": "form-control",
+            }
+        )
+
+        return form
+
     def form_valid(self, form):
         # Get the itinerary_pk from the URL
         itinerary_id = self.kwargs["itinerary_id"]
@@ -183,7 +193,6 @@ class ActivityCreate(CreateView):
         activity.save()
 
         return redirect("detail_itinerary", pk=itinerary_id)
-        
 
 
 class ActivityUpdate(UpdateView):
@@ -221,6 +230,3 @@ class ActivityDelete(DeleteView):
     def get_success_url(self):
         itinerary_id = self.kwargs.get("itinerary_id")
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
-
-
-
