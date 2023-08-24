@@ -1,8 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container mt-4">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-lg-8">
       <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Add Travel Itinerary</h3>
+        </div>
         <div class="card-body">
           <!-- prettier-ignore -->
           <form action="" method="POST">
@@ -22,14 +25,4 @@
     </div>
   </div>
 </div>
-
-<script>
-  $(document).ready(function () {
-    $(".datepicker").datepicker({
-      format: "yyyy-mm-dd",
-      autoclose: true, // Auto-closes the datepicker when a date is selected
-      todayHighlight: true, // Highlights today's date
-    });
-  });
-</script>
 {% endblock %}

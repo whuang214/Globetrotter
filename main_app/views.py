@@ -96,37 +96,15 @@ class ItineraryCreate(CreateView):
     fields = ["title", "start_date", "end_date", "location"]
     success_url = reverse_lazy("index_itinerary")
 
-    # override the get_form method to add the datepicker attribute to the date fields
     def get_form(self, form_class=None):
-        form = super().get_form(form_class=form_class)
-        # Adding attributes to the end_date widget using attrs
-        form.fields["title"].widget.attrs.update(
-            {
-                "placeholder": "Enter Title",
-                "class": "form-control",
-            }
-        )
-        form.fields["start_date"].widget.attrs.update(
-            {
-                "placeholder": "Enter Start Date",
-                "data-provide": "datepicker",
-                "class": "form-control",
-            }
-        )
+        form = super().get_form(form_class)
 
-        form.fields["end_date"].widget.attrs.update(
-            {
-                "placeholder": "Enter End Date",
-                "data-provide": "datepicker",
-                "class": "form-control",
-            }
-        )
-        form.fields["location"].widget.attrs.update(
-            {
-                "placeholder": "Enter Location",
-                "class": "form-control",
-            }
-        )
+        for field_name, field in form.fields.items():
+            field.widget.attrs.update({"class": "form-control"})
+
+            if field_name == "end_date" or field_name == "start_date":
+                field.widget.input_type = "date"
+
         return form
 
     # override the form_valid method to add the user to the itinerary
@@ -161,7 +139,20 @@ class ItineraryDelete(DeleteView):
 class ActivityCreate(CreateView):
     model = Activity
     template_name = "activities/create.html"
-    fields = ["name", "category", "date_time", "location"]
+    fields = ["name", "category", "date", "time", "location"]
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        for field_name, field in form.fields.items():
+            field.widget.attrs.update({"class": "form-control"})
+
+            if field_name == "date":
+                field.widget.input_type = "date"
+            elif field_name == "time":
+                field.widget.input_type = "time"
+
+        return form
 
     def form_valid(self, form):
         # Get the itinerary_pk from the URL
