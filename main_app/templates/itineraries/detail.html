@@ -24,10 +24,10 @@
         >
       </div>
 
-      {% comment %} Shared User Card {% endcomment %}
       <div class="card-body">
         <div class="row">
           <div class="col-md-5">
+            {% comment %} Shared User Card {% endcomment %}
             <div class="card">
               <div
                 class="card-header d-flex justify-content-between align-items-center"
@@ -51,29 +51,39 @@
             </div>
             <br />
             {% comment %} Flight Card {% endcomment %}
-            <div class="card-body">
-              <a href="{% url 'create_flight' itinerary_id=itinerary.id  %}" class="btn btn-primary">Add Flight</a>
-              <table class="table table-striped table-sm mb-0">
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>Flight No</th>
-                    <th>Arrival Time</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for flight in itinerary.flight_set.all %}
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
+                <h5 class="mb-0">Flights:</h5>
+                <a
+                  href="{% url 'create_flight' itinerary_id=itinerary.id %}"
+                  class="btn btn-sm m-0 rounded-pill"
+                  >Add</a
+                >
+              </div>
+              <div class="card-text overflow-auto" style="max-height: 100px">
+                <table class="table table-striped table-sm mb-0">
+                  <tbody>
+                    {% for flight in itinerary.flight_set.all %}
                     <tr>
                       <td>{{ user.username }}</td>
                       <td>{{ flight.flight }}</td>
                       <td>{{ flight.arrival_time }}</td>
-                      <a href="{% url 'update_flight' itinerary_id=itinerary.id  flight_id=flight.id %}" class="btn btn-primary">Edit Flight</a>
+                      <td>
+                        <a
+                          href="{% url 'update_flight' itinerary_id=itinerary.id flight_id=flight.id %}"
+                          class="btn btn-sm m-0 rounded-pill"
+                          >Edit</a
+                        >
+                      </td>
                     </tr>
+                    {% endfor %}
                   </tbody>
-                  {% endfor %}
-                </tbody>
-              </table>
+                </table>
+              </div>
             </div>
+            <br />
             {% comment %} Hotel Card {% endcomment %}
             <div class="card">
               <div
