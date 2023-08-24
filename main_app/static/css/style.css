@@ -71,10 +71,21 @@ p.card-title {
     margin: 0px 0px;
 }
 
-.card-text.extra {
+.card-text {
     margin: 0px 0px;
 }
 
 a.btn.add {
     float: right;
+}
+
+.container.part-2 {
+    border: 1px solid red;
+    height: 550px;
+    overflow-y: scroll;
+}
+
+.banner {
+    background-color: #D6AF6D;
+    padding: 20px 20px 0px 20px;
 }
