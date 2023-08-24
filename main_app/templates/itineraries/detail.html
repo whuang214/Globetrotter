@@ -70,9 +70,8 @@
                     {% for activity in itinerary.activity_set.all %}
                     <ul class="list-group list-group-light list-group-small">
                       <li class="list-group-item">
-                        <p class="card-title">{{ activity.name }}</p>
-                        <p class="card-text extra">{{ activity.date_time }}</p>
-                        <p class="card-text extra">{{ activity.location }}</p>
+                        <p class="card-title">{{ activity.name }} - {{ activity.location }}</p>
+                        <p class="card-text extra">{{ activity.date }} at {{ activity.time }}</p>
                         <div class="d-grid gap-2 d-md-block">
                           <a
                             href="{% url 'update_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
