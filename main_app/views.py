@@ -89,8 +89,6 @@ class ItineraryDetail(DetailView):
     template_name = "itineraries/detail.html"
     context_object_name = "itinerary"
 
-    # add a joined table of users and flights
-
 
 class ItineraryCreate(CreateView):
     model = TravelItinerary
@@ -244,7 +242,7 @@ class UpdateFlight(UpdateView):
     model = Flight
     template_name = "flights/update.html"
     context_object_name = "flight"
-    fields = ['flight', 'arrival_time']
+    fields = ["flight", "arrival_time"]
 
     def get_object(self, queryset=None):
         itinerary_id = self.kwargs.get("itinerary_id")
@@ -257,4 +255,3 @@ class UpdateFlight(UpdateView):
     def get_success_url(self):
         itinerary_id = self.kwargs.get("itinerary_id")
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
-
