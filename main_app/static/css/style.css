@@ -63,15 +63,9 @@ a.btn:hover {
   background-color: white;
 }
 
-/* .detailpage {
-  border: 3px solid black;
-} */
-
 h5 {
   font-weight: bold;
   font-size: 0.9rem;
-.detailpage {
-    border: 3px solid black;
 }
 
 .list-group {
@@ -99,9 +93,8 @@ a.btn.add {
     overflow-y: scroll;
 }
 
-.banner {
-    background-color: #D6AF6D;
-    padding: 20px 20px 0px 20px;
+.card-header {
+    background-color: #ebca8b;
 }
 
 .banner {

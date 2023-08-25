@@ -7,10 +7,10 @@
 <div>
   <div class="container detailpage">
     <div class="card">
-      <div class="card-header text-center align-items-center">
-        <h1 class="display-5">{{ itinerary.title }}</h1>
-        <p class="lead">Destination: {{ itinerary.location }}</p>
-        <p>
+      <div class="card-header text-center align-items-center banner">
+        <h3 class="display-5">{{ itinerary.title }}</h3>
+        <p class="lead" style="margin: 0px 0px 8px 0px">Destination: {{ itinerary.location }}</p>
+        <p style="margin: 0px 0px 8px 0px">
           <!-- prettier-ignore -->
           Date: {{ itinerary.start_date|date:'F d, Y' }} - {{itinerary.end_date|date:'F d, Y' }}
         </p>
@@ -130,7 +130,7 @@
 
           {% comment %} Activities Card {% endcomment %}
           <div class="col-md-7">
-            <div class="card">
+            <div class="card" style="height: 385px">
               <div
                 class="card-header d-flex justify-content-between align-items-center"
               >
