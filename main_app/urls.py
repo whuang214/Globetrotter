@@ -42,7 +42,12 @@ urlpatterns = [
         name="delete_activity",
     ),
     path(
-        "itineraries/<int:itinerary_id>/users/add/",
+        "itineraries/<int:itinerary_id>/users/search/",
+        views.search_user,
+        name="search_user",
+    ),
+    path(
+        "itineraries/<int:itinerary_id>/users/add/<int:user_id>/",
         views.add_user_to_itinerary,
         name="add_user_to_itinerary",
     ),

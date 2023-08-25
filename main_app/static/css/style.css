@@ -61,7 +61,22 @@ p.card-title {
 }
 
 .card-text {
-    margin: 0px 0px;
+  margin: 0px 0px;
+}
+
+.card-header {
+  border-radius: 10px 10px 0px 0px !important;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+  border: 0px;
+  border-radius: 10px;
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 a.btn, .btn {
@@ -74,13 +89,13 @@ a.btn.add {
 }
 
 .container.part-2 {
-    border: 1px solid red;
-    height: 550px;
-    overflow-y: scroll;
+  border: 1px solid red;
+  height: 550px;
+  overflow-y: scroll;
 }
 
 .card-header {
-    background-color: #ebca8b;
+  background-color: #ebca8b;
 }
 
 .banner {

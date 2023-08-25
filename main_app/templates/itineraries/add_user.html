@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container mt-4">
   <div class="card">
-    <div class="card-header">Add User</div>
+    <div class="card-header">
+      <h3>Add User to {{ itinerary.title}}</h3>
+    </div>
     <div class="card-body">
       <form method="post" action="">
         {% csrf_token %}
@@ -17,6 +19,40 @@
           </div>
         </div>
       </form>
+
+      <!-- Display found users -->
+      <div class="mt-4">
+        {% if users %}
+        <div class="row">
+          {% for user in users %}
+          <div class="col-md-12 mb-4">
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
+                <h6 class="mb-0 font-weight-bold">{{ user.username }}</h6>
+                <a
+                  href="{% url 'add_user_to_itinerary' itinerary_id=itinerary.id user_id=user.id %}"
+                  class="btn btn-dark btn-sm m-0"
+                  >Add</a
+                >
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  <!-- prettier-ignore -->
+                  <strong>Name:</strong> {{user.first_name}} {{user.last_name}}
+                  <br />
+                  <strong>Email:</strong> {{ user.email }}
+                </p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% elif search_performed %}
+        <p>No users found.</p>
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>
