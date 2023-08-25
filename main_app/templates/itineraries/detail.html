@@ -7,24 +7,24 @@
 <div class="wrapper">
   <div class="card" style="border-radius: 10px">
     <div
-      class="card-header text-center align-items-center text-white"
-      style="background-color: #024289; border-radius: 10px 10px 0 0"
+      class="card-header text-center align-items-center"
+      style="border-radius: 10px 10px 0 0"
     >
-      <h1 class="display-5 font-weight-bold p-2">{{ itinerary.title }}</h1>
-      <p><strong>Destination:</strong> {{ itinerary.location }}</p>
-      <p>
+      <h1 class="display-5 font-weight-bold" style="margin: 0 0; padding: 8px 8px 0 8px">{{ itinerary.title }}</h1>
+      <p  style="margin: 0 0"><strong>Destination:</strong> {{ itinerary.location }}</p>
+      <p style="margin: 0 0">
         <!-- prettier-ignore -->
         <strong>Date:</strong> {{ itinerary.start_date|date:'F d, Y' }} -
         {{itinerary.end_date|date:'F d, Y' }}
       </p>
       <a
         href="{% url 'update_itinerary' itinerary.id %}"
-        class="btn btn-outline-success btn-sm mr-2"
+        class="btn btn-success btn-sm mr-2"
         ><i class="bi bi-sliders"></i
       ></a>
       <a
         href="{% url 'delete_itinerary' itinerary.id %}"
-        class="btn btn-outline-danger btn-sm"
+        class="btn btn-danger btn-sm"
         ><i class="bi bi-trash"></i
       ></a>
     </div>

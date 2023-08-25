@@ -1,6 +1,5 @@
 body {
-  /* background-color: #fafafa; */
-  background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages7.alphacoders.com%2F686%2Fthumb-1920-686012.jpg&f=1&nofb=1&ipt=26bb08c31f1535b528150c49f67e2b38f196486c96e87e700a75debbb0669907&ipo=images");
+  background-color: #e3e3e3;
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "Roboto", sans-serif;
@@ -24,17 +23,17 @@ body {
   margin-top: 170px;
   border: 3px solid black; /* Add a border with a color */
   border-radius: 30px;
-  background-color: #7e8bda;
+  /* background-color: #7e8bda; */
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
 .navbar-dark {
-  background-color: #024289;
+  background-color: #5c71e8;
 }
 
 footer.page-footer {
-  background-color: #024289;
+  background-color: #5c71e8;
 }
 
 .btn-long {
@@ -47,7 +46,7 @@ footer.page-footer {
 
 h5 {
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1.3rem;
 }
 
 .list-group {
@@ -80,6 +79,11 @@ p.card-title {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
+a.btn, .btn {
+    background-color: #3345a9;
+    color: white;
+}
+
 a.btn.add {
   float: right;
 }
@@ -95,6 +99,6 @@ a.btn.add {
 }
 
 .banner {
-  background-color: #d6af6d;
-  padding: 20px 20px 0px 20px;
+    background-color: #dcb064;
+    padding: 20px 20px 0px 20px;
 }
