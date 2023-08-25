@@ -79,7 +79,17 @@ p.card-title {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-a.btn, .btn {
+a.btn {
+    background-color: #353A3F;
+    color: white;
+}
+
+.btn {
+    background-color: #3345a9;
+    color: white;
+}
+
+.btn {
     background-color: #3345a9;
     color: white;
 }
@@ -99,6 +109,6 @@ a.btn.add {
 }
 
 .banner {
-    background-color: #dcb064;
+    background-color: #ebca8b;
     padding: 20px 20px 0px 20px;
 }
