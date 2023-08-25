@@ -8,10 +8,6 @@ body {
   font-size: 40px;
 }
 
-.navbar-dark {
-  background-color: #5c71e8;
-}
-
 .ticket {
   width: 700px;
   border-radius: 10px;
@@ -30,29 +26,8 @@ body {
   padding-bottom: 30px;
 }
 
-input.first-name,
-input.last-name {
-  max-width: 150px;
-}
-
 footer.page-footer {
   background-color: #5c71e8;
-}
-
-button.btn,
-input.btn,
-a.btn {
-  background-color: rgb(92, 47, 206);
-  border: 1px rgb(92, 47, 206);
-  margin: 0 auto;
-  color: white;
-}
-
-button.btn:hover,
-input.btn:hover,
-a.btn:hover {
-  background-color: rgb(60, 31, 137);
-  color: white;
 }
 
 .btn-long {
@@ -62,10 +37,6 @@ a.btn:hover {
 .card-footer {
   background-color: white;
 }
-
-/* .detailpage {
-  border: 3px solid black;
-} */
 
 h5 {
   font-weight: bold;
