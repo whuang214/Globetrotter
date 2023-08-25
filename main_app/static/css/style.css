@@ -29,8 +29,12 @@ body {
   padding-bottom: 30px;
 }
 
+.navbar-dark {
+  background-color: #024289;
+}
+
 footer.page-footer {
-  background-color: #5c71e8;
+  background-color: #024289;
 }
 
 .btn-long {

@@ -24,7 +24,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <header class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <header class="navbar navbar-expand-lg navbar-dark">
         <nav class="container navigation">
           <a href="{% url 'home' %}" class="navbar-brand font-weight-bold"
             ><i class="bi bi-globe-americas"></i> Globetrotter</a
@@ -76,7 +76,7 @@
       </header>
       <main class="container mt-4">{% block content %} {% endblock %}</main>
     </div>
-    <footer class="page-footer text-white fixed-bottom bg-primary">
+    <footer class="page-footer text-white fixed-bottom">
       <div class="container text-right py-3">
         All Rights Reserved, &copy; {% now "Y" %} Globetrotter
       </div>

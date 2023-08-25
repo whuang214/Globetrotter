@@ -1,5 +1,5 @@
 .wrapper {
-  padding-bottom: 40px;
+  padding-bottom: 2rem;
 }
 
 .card-header {
@@ -10,6 +10,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.2s ease;
   border: 0px;
+  border-radius: 10px;
 }
 
 .card:hover {
