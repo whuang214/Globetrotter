@@ -1,5 +1,8 @@
 body {
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
+  background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages7.alphacoders.com%2F686%2Fthumb-1920-686012.jpg&f=1&nofb=1&ipt=26bb08c31f1535b528150c49f67e2b38f196486c96e87e700a75debbb0669907&ipo=images");
+  background-size: cover;
+  background-repeat: no-repeat;
   font-family: "Roboto", sans-serif;
   height: 100vh;
 }
