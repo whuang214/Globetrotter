@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # models imports
 from .models import TravelItinerary, Activity, Flight
+from django.contrib.auth.models import User
 from .forms import CustomUserCreationForm
 
 # auth imports
@@ -171,10 +172,8 @@ class ActivityCreate(CreateView):
         context = super().get_context_data(**kwargs)
         itinerary_id = self.kwargs["itinerary_id"]
         travel_itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
-        context['travel_itinerary'] = travel_itinerary
+        context["travel_itinerary"] = travel_itinerary
         return context
-
-        
 
 
 class ActivityUpdate(UpdateView):
@@ -265,11 +264,31 @@ class UpdateFlight(UpdateView):
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
 
 
-def add_user_to_itinerary(request, itinerary_id):
-    if request.method == "GET":
-        return render(request, "itineraries/add_user.html")
+def search_user(request, itinerary_id):
+    users = []
+    itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+    search_performed = False
+
     if request.method == "POST":
-        itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
-        # find the user by search
-        # itinerary.users.add(user)
-        return redirect("detail_itinerary", pk=itinerary_id)
+        search_query = request.POST.get("search", "")
+        search_performed = True
+        if search_query:  # if search query is empty it does not run
+            # filter out the users that are already in the itinerary
+            users = User.objects.filter(username__icontains=search_query).exclude(
+                id__in=itinerary.users.all()
+            )
+    context = {
+        "users": users,
+        "itinerary": itinerary,
+        "search_performed": search_performed,
+    }
+
+    return render(request, "itineraries/add_user.html", context)
+
+
+def add_user_to_itinerary(request, itinerary_id, user_id):
+    itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+    # get the user id from the form
+    user = get_object_or_404(User, pk=user_id)
+    itinerary.users.add(user)
+    return redirect("detail_itinerary", pk=itinerary_id)

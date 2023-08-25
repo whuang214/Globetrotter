@@ -43,7 +43,7 @@
               </h5>
               <a
                 href="{% url 'add_user_to_itinerary' itinerary_id=itinerary.id %}"
-                class="btn btn-outline-dark btn-sm m-0 rounded-pill"
+                class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
               >
                 <i class="bi bi-plus-lg"></i>
               </a>
@@ -116,7 +116,9 @@
                 <tbody>
                   {% for flight in itinerary.flight_set.all %}
                   <tr>
-                    <td class="small text-center p-2">{{ user.first_name }}</td>
+                    <td class="small text-center p-2">
+                      {{ flight.user.first_name }}
+                    </td>
                     <td class="small text-center p-2">{{ flight.flight }}</td>
                     <td class="small text-center p-2">
                       {{ flight.arrival_time }}
