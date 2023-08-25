@@ -1,15 +1,14 @@
 body {
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
+  background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages7.alphacoders.com%2F686%2Fthumb-1920-686012.jpg&f=1&nofb=1&ipt=26bb08c31f1535b528150c49f67e2b38f196486c96e87e700a75debbb0669907&ipo=images");
+  background-size: cover;
+  background-repeat: no-repeat;
   font-family: "Roboto", sans-serif;
   height: 100vh;
 }
 
 .navbar-brand {
   font-size: 40px;
-}
-
-.navbar-dark {
-  background-color: #5c71e8;
 }
 
 .ticket {
@@ -30,29 +29,12 @@ body {
   padding-bottom: 30px;
 }
 
-input.first-name,
-input.last-name {
-  max-width: 150px;
+.navbar-dark {
+  background-color: #024289;
 }
 
 footer.page-footer {
-  background-color: #5c71e8;
-}
-
-button.btn,
-input.btn,
-a.btn {
-  background-color: rgb(92, 47, 206);
-  border: 1px rgb(92, 47, 206);
-  margin: 0 auto;
-  color: white;
-}
-
-button.btn:hover,
-input.btn:hover,
-a.btn:hover {
-  background-color: rgb(60, 31, 137);
-  color: white;
+  background-color: #024289;
 }
 
 .btn-long {

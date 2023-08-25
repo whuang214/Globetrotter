@@ -4,171 +4,252 @@
   type="text/css"
   href="{% static 'css/itinerary_detail.css' %}"
 />
-<div>
-  <div class="container detailpage">
-    <div class="card">
-      <div class="card-header text-center align-items-center banner">
-        <h3 class="display-5">{{ itinerary.title }}</h3>
-        <p class="lead" style="margin: 0px 0px 8px 0px">Destination: {{ itinerary.location }}</p>
-        <p style="margin: 0px 0px 8px 0px">
-          <!-- prettier-ignore -->
-          Date: {{ itinerary.start_date|date:'F d, Y' }} - {{itinerary.end_date|date:'F d, Y' }}
-        </p>
-        <a
-          href="{% url 'update_itinerary' itinerary.id %}"
-          class="btn btn-sm mr-2"
-          >Edit</a
-        >
-        <a href="{% url 'delete_itinerary' itinerary.id %}" class="btn btn-sm"
-          >Delete</a
-        >
-      </div>
+<div class="wrapper">
+  <div class="card" style="border-radius: 10px">
+    <div
+      class="card-header text-center align-items-center text-white"
+      style="background-color: #024289; border-radius: 10px 10px 0 0"
+    >
+      <h1 class="display-5 font-weight-bold p-2">{{ itinerary.title }}</h1>
+      <p><strong>Destination:</strong> {{ itinerary.location }}</p>
+      <p>
+        <!-- prettier-ignore -->
+        <strong>Date:</strong> {{ itinerary.start_date|date:'F d, Y' }} -
+        {{itinerary.end_date|date:'F d, Y' }}
+      </p>
+      <a
+        href="{% url 'update_itinerary' itinerary.id %}"
+        class="btn btn-outline-success btn-sm mr-2"
+        ><i class="bi bi-sliders"></i
+      ></a>
+      <a
+        href="{% url 'delete_itinerary' itinerary.id %}"
+        class="btn btn-outline-danger btn-sm"
+        ><i class="bi bi-trash"></i
+      ></a>
+    </div>
 
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-5">
-            {% comment %} Shared User Card {% endcomment %}
-            <div class="card">
-              <div
-                class="card-header d-flex justify-content-between align-items-center"
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5">
+          {% comment %} Shared User Card {% endcomment %}
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center bg-dark text-white p-0"
+              style="border-radius: 10px 10px 0 0"
+            >
+              <h5 class="mb-0 pl-2">
+                <i class="bi bi-person-fill"></i> Shared Users
+              </h5>
+              <a
+                href="#"
+                class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
               >
-                <h5 class="mb-0">Shared Users:</h5>
-                <a href="#" class="btn btn-sm m-0 rounded-pill">Share</a>
-              </div>
+                <i class="bi bi-plus-lg"></i>
+              </a>
+            </div>
 
-              <div class="card-text overflow-auto" style="max-height: 100px">
-                <table class="table table-striped table-sm mb-0">
-                  <tbody>
-                    {% for user in itinerary.users.all %}
-                    <tr>
-                      <td class="small">{{ user.first_name }}</td>
-                      <td class="small">{{ user.last_name }}</td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <br>
-            <div class="card">
-              <div
-                class="card-header d-flex justify-content-between align-items-center"
-              >
-                <h5 class="mb-0">Flights:</h5>
-                <a
-                  href="{% url 'create_flight' itinerary_id=itinerary.id %}"
-                  class="btn btn-sm m-0 rounded-pill"
-                  >Add</a
-                >
-              </div>
-              <div class="card-text overflow-auto" style="max-height: 100px">
-                <table class="table table-striped table-sm mb-0">
-                  <tbody>
-                    {% for flight in itinerary.flight_set.all %}
-                    <tr>
-                      <td>{{ user.username }}</td>
-                      <td>{{ flight.flight }}</td>
-                      <td>{{ flight.arrival_time }}</td>
-                      <td>
-                        <a
-                          href="{% url 'update_flight' itinerary_id=itinerary.id flight_id=flight.id %}"
-                          class="btn btn-sm m-0 rounded-pill"
-                          >Edit</a
-                        >
-                      </td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <br />
-            {% comment %} Hotel Card {% endcomment %}
-            <div class="card">
-              <div
-                class="card-header d-flex justify-content-between align-items-center"
-              >
-                <h5 class="mb-0">Hotel:</h5>
-                {% if itinerary.hotel %}
-                <a href="#" class="btn btn-sm m-0 rounded-pill">Edit</a>
-                {% else %}
-                <a href="#" class="btn btn-sm m-0 rounded-pill">Add</a>
-                {% endif %}
-              </div>
-              <div class="card-text overflow-auto" style="max-height: 300px">
-                {% if itinerary.hotel %}
-                <p class="small p-1">{{ itinerary.hotel }}</p>
-                {% else %}
-                <p class="small p-1">No hotel yet.</p>
-                {% endif %}
-                <br />
-                Insert Hotel Map Here
-              </div>
-            </div>
-            <br />
-            {% comment %} Notes Card {% endcomment %}
-            <div class="card">
-              <div
-                class="card-header d-flex justify-content-between align-items-center"
-              >
-                <h5 class="mb-0">Notes:</h5>
-                {% if itinerary.notes != '' %}
-                <a href="#" class="btn btn-sm m-0 rounded-pill">Edit</a>
-                {% else %}
-                <a href="#" class="btn btn-sm m-0 rounded-pill">Add</a>
-                {% endif %}
-              </div>
-              <div class="card-text overflow-auto" style="max-height: 100px">
-                {% if itinerary.notes == '' %}
-                <p class="small p-1">No notes yet.</p>
-                {% else %}
-                <p class="small p-1">{{ itinerary.notes }}</p>
-                {% endif %}
-              </div>
+            <div
+              class="card-text overflow-auto"
+              style="max-height: 100px; border-radius: 0 0 10px 10px"
+            >
+              <table class="table table-striped table-sm mb-0">
+                <thead>
+                  <tr>
+                    <th class="small font-weight-bold text-center">Username</th>
+                    <th class="small font-weight-bold text-center">
+                      First Name
+                    </th>
+                    <th class="small font-weight-bold text-center">
+                      Last Name
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {% for user in itinerary.users.all %}
+                  <tr>
+                    <td class="small text-center p-2">{{ user.username }}</td>
+                    <td class="small text-center p-2">{{ user.first_name }}</td>
+                    <td class="small text-center p-2">{{ user.last_name }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
             </div>
           </div>
 
-          {% comment %} Activities Card {% endcomment %}
-          <div class="col-md-7">
-            <div class="card" style="height: 385px">
-              <div
-                class="card-header d-flex justify-content-between align-items-center"
+          <br />
+          {% comment %} Flight Card {% endcomment %}
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center bg-dark text-white p-0"
+              style="border-radius: 10px 10px 0 0"
+            >
+              <h5 class="mb-0 pl-2">
+                <i class="bi bi-airplane-fill"></i> Flights
+              </h5>
+              <a
+                href="{% url 'create_flight' itinerary_id=itinerary.id %}"
+                class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
               >
-                <h5 class="mb-0">Activities:</h5>
-                <a
-                  href="{% url 'create_activity' itinerary_id=itinerary.id %}"
-                  class="btn btn-sm m-0 rounded-pill"
-                  >Add</a
+                <i class="bi bi-plus-lg"></i>
+              </a>
+            </div>
+
+            <div
+              class="card-text overflow-auto"
+              style="max-height: 100px; border-radius: 0 0 10px 10px"
+            >
+              <table class="table table-striped table-sm mb-0">
+                <thead>
+                  <tr>
+                    <th class="small font-weight-bold text-center">Name</th>
+                    <th class="small font-weight-bold text-center">Flight</th>
+                    <th class="small font-weight-bold text-center">
+                      Arrival Time
+                    </th>
+                    <th class="small font-weight-bold text-center"></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {% for flight in itinerary.flight_set.all %}
+                  <tr>
+                    <td class="small text-center p-2">{{ user.first_name }}</td>
+                    <td class="small text-center p-2">{{ flight.flight }}</td>
+                    <td class="small text-center p-2">
+                      {{ flight.arrival_time }}
+                    </td>
+                    <td class="text-center">
+                      <a
+                        href="{% url 'update_flight' itinerary_id=itinerary.id flight_id=flight.id %}"
+                        class="btn btn-light btn-sm m-0 rounded-pill"
+                      >
+                        <i class="bi bi-pencil"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <br />
+          {% comment %} Hotel Card {% endcomment %}
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center bg-dark text-white p-0"
+              style="border-radius: 10px 10px 0 0"
+            >
+              <h5 class="mb-0 pl-2">
+                <i class="bi bi-building-fill"></i> Hotel
+              </h5>
+              <a
+                href="#"
+                class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
+                ><i class="bi bi-pencil"></i
+              ></a>
+            </div>
+            <div
+              class="card-text overflow-auto"
+              style="max-height: 300px; border-radius: 0 0 10px 10px"
+            >
+              {% if itinerary.hotel %}
+              <p class="small p-1">{{ itinerary.hotel }}</p>
+              {% else %}
+              <p class="small p-1">No hotel yet.</p>
+              {% endif %}
+              <br />
+              Insert Hotel Map Here
+            </div>
+          </div>
+          <br />
+          {% comment %} Notes Card {% endcomment %}
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center bg-dark text-white p-0"
+              style="border-radius: 10px 10px 0 0"
+            >
+              <h5 class="mb-0 pl-2">
+                <i class="bi bi-clipboard-fill"></i> Notes
+              </h5>
+              <a
+                href="#"
+                class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
+                ><i class="bi bi-pencil"></i
+              ></a>
+            </div>
+            <div
+              class="card-text overflow-auto"
+              style="max-height: 300px; border-radius: 0 0 10px 10px"
+            >
+              {% if itinerary.notes == '' %}
+              <p class="small p-1">
+                No notes yet. Just kidding, there is a lot of notes for this.
+                These are all examples
+              </p>
+              {% else %}
+              <p class="small p-1">{{ itinerary.notes }}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% comment %} Activities Card {% endcomment %}
+        <div class="col-md-7">
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center bg-dark text-white p-0"
+              style="border-radius: 10px 10px 0 0"
+            >
+              <h5 class="mb-0 pl-2">
+                <i class="bi bi-calendar-event-fill"></i> Activities
+              </h5>
+              <a
+                href="{% url 'create_activity' itinerary_id=itinerary.id %}"
+                class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
+                ><i class="bi bi-plus-lg"></i
+              ></a>
+            </div>
+            <div
+              class="card-text overflow-auto"
+              style="max-height: 50vh; border-radius: 0 0 10px 10px"
+            >
+              {% for activity in itinerary.activity_set.all %}
+              <div class="card mt-3 m-3">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center bg-warning text-white p-0"
+                  style="border-radius: 10px 10px 0 0"
                 >
-              </div>
-              <div class="card-body overflow-auto">
-                {% for activity in itinerary.activity_set.all %}
-                <ul class="list-group list-group-light list-group-small">
-                  <li class="list-group-item">
-                    <p class="card-title">
-                      {{ activity.name }} - {{ activity.location }}
+                  <h5 class="mb-0 p-1 pl-2">{{ activity.name }}</h5>
+                  <div class="button-container">
+                    <a
+                      href="{% url 'update_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
+                      class="btn text-white btn-sm m-0 rounded-pill"
+                      ><i class="bi bi-pencil"></i
+                    ></a>
+                    <a
+                      href="{% url 'delete_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
+                      class="btn text-white btn-sm m-0 rounded-pill"
+                      ><i class="bi bi-trash"></i
+                    ></a>
+                  </div>
+                </div>
+                <div class="card-body p-2" style="border-radius: 0 0 10px 10px">
+                  <!-- prettier-ignore -->
+                  <p class="small p-1 m-0">
+                      <strong>Date and Time:</strong> {{ activity.time }} on {{ activity.date }} 
                     </p>
-                    <p class="card-text extra">
-                      {{ activity.date }} at {{ activity.time }}
-                    </p>
-                    <div class="d-grid gap-2 d-md-block">
-                      <a
-                        href="{% url 'update_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
-                        class="btn btn-sm m-0 rounded-pill"
-                        >Edit</a
-                      >
-                      <a
-                        href="{% url 'delete_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
-                        class="btn btn-danger btn-sm m-0 rounded-pill"
-                        >Delete</a
-                      >
-                    </div>
-                  </li>
-                </ul>
-                {% empty %}
-                <p>No activities yet.</p>
-                {% endfor %}
+                  <p class="small p-1 m-0">
+                    <strong>Location:</strong> {{ activity.location }}
+                  </p>
+                  <div class="d-grid gap-2 d-md-block"></div>
+                </div>
               </div>
+              {% empty %}
+              <p>No activities yet.</p>
+              {% endfor %}
             </div>
           </div>
         </div>
