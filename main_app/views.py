@@ -165,8 +165,16 @@ class ActivityCreate(CreateView):
         activity = form.save(commit=False)
         activity.travelItinerary = travel_itinerary
         activity.save()
-
         return redirect("detail_itinerary", pk=itinerary_id)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        itinerary_id = self.kwargs["itinerary_id"]
+        travel_itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+        context['travel_itinerary'] = travel_itinerary
+        return context
+
+        
 
 
 class ActivityUpdate(UpdateView):
