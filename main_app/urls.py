@@ -43,8 +43,8 @@ urlpatterns = [
     ),
     path(
         "itineraries/<int:itinerary_id>/users/add/",
-        views.add_user_to_itinerary,
-        name="add_user_to_itinerary",
+        views.search_user,
+        name="search_user",
     ),
     path(
         "itineraries/<int:itinerary_id>/flights/create/",

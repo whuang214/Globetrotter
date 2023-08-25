@@ -264,7 +264,7 @@ class UpdateFlight(UpdateView):
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
 
 
-def add_user_to_itinerary(request, itinerary_id):
+def search_user(request, itinerary_id):
     users = []
     itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
     search_performed = False
