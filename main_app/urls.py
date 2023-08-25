@@ -42,12 +42,18 @@ urlpatterns = [
         name="delete_activity",
     ),
     path(
+        "itineraries/<int:itinerary_id>/users/add/",
+        views.add_user_to_itinerary,
+        name="add_user_to_itinerary",
+    ),
+    path(
         "itineraries/<int:itinerary_id>/flights/create/",
-        views.CreateFlight.as_view(), name="create_flight",
+        views.CreateFlight.as_view(),
+        name="create_flight",
     ),
     path(
         "itineraries/<int:itinerary_id>/flights/<int:flight_id>/update/",
-        views.UpdateFlight.as_view(), name="update_flight",
+        views.UpdateFlight.as_view(),
+        name="update_flight",
     ),
-    
 ]

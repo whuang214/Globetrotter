@@ -263,3 +263,13 @@ class UpdateFlight(UpdateView):
     def get_success_url(self):
         itinerary_id = self.kwargs.get("itinerary_id")
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
+
+
+def add_user_to_itinerary(request, itinerary_id):
+    if request.method == "GET":
+        return render(request, "itineraries/add_user.html")
+    if request.method == "POST":
+        itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+        # find the user by search
+        # itinerary.users.add(user)
+        return redirect("detail_itinerary", pk=itinerary_id)
