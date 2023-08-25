@@ -273,8 +273,10 @@ def search_user(request, itinerary_id):
         search_query = request.POST.get("search", "")
         search_performed = True
         if search_query:  # if search query is empty it does not run
-            users = User.objects.filter(username__icontains=search_query)
-
+            # filter out the users that are already in the itinerary
+            users = User.objects.filter(username__icontains=search_query).exclude(
+                id__in=itinerary.users.all()
+            )
     context = {
         "users": users,
         "itinerary": itinerary,
@@ -282,3 +284,11 @@ def search_user(request, itinerary_id):
     }
 
     return render(request, "itineraries/add_user.html", context)
+
+
+def add_user_to_itinerary(request, itinerary_id, user_id):
+    itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+    # get the user id from the form
+    user = get_object_or_404(User, pk=user_id)
+    itinerary.users.add(user)
+    return redirect("detail_itinerary", pk=itinerary_id)
