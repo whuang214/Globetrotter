@@ -27,8 +27,15 @@
           {% for user in users %}
           <div class="col-md-12 mb-4">
             <div class="card">
-              <div class="card-header">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
                 <h6 class="mb-0 font-weight-bold">{{ user.username }}</h6>
+                <a
+                  href="{% url 'update_itinerary' itinerary.id %}"
+                  class="btn btn-dark btn-sm m-0"
+                  >Add</a
+                >
               </div>
               <div class="card-body">
                 <p class="card-text">
