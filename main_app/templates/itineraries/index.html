@@ -1,31 +1,32 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container mt-4">
+<div class="container mt-4" style="border: 1px solid red">
   <h3 class="mb-4">Planned Trips</h3>
-
-  <div class="row">
-    {% if itineraries %} {% for itinerary in itineraries %}
-    <div class="col-md-12 mb-4">
-      <div class="card border border-primary rounded">
-        <div class="card-body">
-          <h5 class="card-title">{{ itinerary.title }}</h5>
-          <p class="card-text">Start Date: {{ itinerary.start_date }}</p>
-          <p class="card-text">End Date: {{ itinerary.end_date }}</p>
-          <p class="card-text">Destination: {{ itinerary.location }}</p>
-        </div>
-        <div class="card-footer">
-          <a
-            href="{% url 'detail_itinerary' itinerary.id %}"
-            class="btn"
-            >View Details</a
-          >
+  <div class="container part-2">
+    <div class="row">
+      {% if itineraries %} {% for itinerary in itineraries %}
+      <div class="col-md-12 mb-4">
+        <div class="card border border-primary rounded">
+          <div class="card-body banner">
+            <h5 class="card-title">{{ itinerary.title }}</h5>
+            <p class="card-text">Start Date: {{ itinerary.start_date }}</p>
+            <p class="card-text">End Date: {{ itinerary.end_date }}</p>
+            <p class="card-text">Destination: {{ itinerary.location }}</p>
+          </div>
+          <div class="card-footer">
+            <a
+              href="{% url 'detail_itinerary' itinerary.id %}"
+              class="btn"
+              >View Details</a
+            >
+          </div>
         </div>
       </div>
+      {% endfor %} {% else %}
+      <div class="col-md-12">
+        <p>No itineraries available.</p>
+      </div>
+      {% endif %}
     </div>
-    {% endfor %} {% else %}
-    <div class="col-md-12">
-      <p>No itineraries available.</p>
-    </div>
-    {% endif %}
   </div>
 </div>
 {% endblock %}
