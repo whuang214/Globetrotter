@@ -89,11 +89,6 @@ a.btn {
     color: white;
 }
 
-.btn {
-    background-color: #3345a9;
-    color: white;
-}
-
 a.btn.add {
   float: right;
 }
