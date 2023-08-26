@@ -3,13 +3,15 @@
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Create Activity for {{ travel_itinerary.title }} </h3>
+        <div class="card-header bg-yellow">
+          <h4 class="card-title">
+            Create Activity for <strong>{{ travel_itinerary.title }}</strong>
+          </h4>
         </div>
         <div class="card-body">
           <form method="POST">
             {% csrf_token %} {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-purple">
               Create Activity
             </button>
           </form>

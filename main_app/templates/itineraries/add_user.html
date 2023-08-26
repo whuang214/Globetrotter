@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container mt-4">
   <div class="card">
-    <div class="card-header">
-      <h3>Add User to {{ itinerary.title}}</h3>
+    <div class="card-header bg-yellow">
+      <h4>Add User to <strong>{{ itinerary.title}}</strong></h4>
     </div>
     <div class="card-body">
       <form method="post" action="">
@@ -15,7 +15,7 @@
             placeholder="Search for a user..."
           />
           <div class="input-group-append">
-            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-purple" type="submit">Search</button>
           </div>
         </div>
       </form>

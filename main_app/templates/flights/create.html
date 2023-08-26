@@ -1,11 +1,42 @@
 {% extends 'base.html' %} {% block content %}
-<h3>Add Flight</h3>
-<form method="POST">
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header bg-yellow">
+          <h4 class="card-title">
+            Add Flight for <strong>{{ travel_itinerary.title }}</strong>
+          </h4>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
 
-  {% csrf_token %} 
-  
-  {{ form.as_p }}
-  <button type="submit" class="btn">Add Flight</button>
-</form>
+            <div class="mb-3">
+              <label
+                for="{{ form.arrival_time.id_for_label }}"
+                class="form-label"
+                >Arrival Time</label
+              >
+              {{ form.arrival_time }} {% if form.arrival_time.errors %}
+              <div class="text-danger">{{ form.arrival_time.errors.0 }}</div>
+              {% endif %}
+            </div>
 
+            <div class="mb-3">
+              <label for="{{ form.flight.id_for_label }}" class="form-label"
+                >Flight Number/ID</label
+              >
+              {{ form.flight }} {% if form.flight.errors %}
+              <div class="text-danger">{{ form.flight.errors.0 }}</div>
+              {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-purple">Add Flight</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

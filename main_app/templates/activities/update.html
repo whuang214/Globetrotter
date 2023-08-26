@@ -1,9 +1,23 @@
 {% extends 'base.html' %} {% block content %}
-
-<h3>Edit Activity</h3>
-<form method="POST">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit" class="btn">Update Activity</button>
-</form>
-
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header bg-yellow">
+          <h4 class="card-title">
+            Update Activity for <strong>{{ travel_itinerary.title }}</strong>
+          </h4>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit" class="btn btn-purple">
+              Update Activity
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -126,8 +126,27 @@ class ItineraryCreate(CreateView):
 class ItineraryUpdate(UpdateView):
     model = TravelItinerary
     template_name = "itineraries/update.html"
-    fields = "__all__"
+    fields = ["title", "start_date", "end_date", "location"]
     success_url = reverse_lazy("index_itinerary")
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        for field_name, field in form.fields.items():
+            field.widget.attrs.update({"class": "form-control"})
+
+            if field_name == "end_date" or field_name == "start_date":
+                field.widget.input_type = "date"
+
+        return form
+
+    # get context data to pass in the itinerary id
+    def get_context_data(self, **kwargs):
+        # get the itinerary object from params
+        context = super().get_context_data(**kwargs)
+        itinerary = get_object_or_404(TravelItinerary, pk=self.kwargs["pk"])
+        context["itinerary"] = itinerary
+        return context
 
 
 class ItineraryDelete(DeleteView):
@@ -180,7 +199,7 @@ class ActivityUpdate(UpdateView):
     model = Activity
     template_name = "activities/update.html"
     context_object_name = "activity"
-    fields = "__all__"
+    fields = ["name", "category", "date", "time", "location"]
 
     def get_object(self, queryset=None):
         itinerary_id = self.kwargs.get("itinerary_id")
@@ -189,6 +208,26 @@ class ActivityUpdate(UpdateView):
             Activity, id=activity_id, travelItinerary_id=itinerary_id
         )
         return activity
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        for field_name, field in form.fields.items():
+            field.widget.attrs.update({"class": "form-control"})
+
+            if field_name == "date":
+                field.widget.input_type = "date"
+            elif field_name == "time":
+                field.widget.input_type = "time"
+
+        return form
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        itinerary_id = self.kwargs["itinerary_id"]
+        travel_itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+        context["travel_itinerary"] = travel_itinerary
+        return context
 
     def get_success_url(self):
         itinerary_id = self.kwargs.get("itinerary_id")
@@ -228,6 +267,20 @@ class CreateFlight(CreateView):
                 field.widget.input_type = "time"
 
         return form
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Get the itinerary_pk from the URL
+        itinerary_id = self.kwargs["itinerary_id"]
+
+        # Get the travel itinerary instance
+        travel_itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+
+        # Add the travel_itinerary to the context
+        context["travel_itinerary"] = travel_itinerary
+
+        return context
 
     def form_valid(self, form):
         # Get the itinerary_pk from the URL

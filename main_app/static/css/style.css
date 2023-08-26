@@ -6,10 +6,7 @@ body {
   height: 100vh;
 }
 
-.navbar-brand {
-  font-size: 40px;
-}
-
+/* auth page styles */
 .ticket {
   width: 700px;
   border-radius: 10px;
@@ -23,9 +20,13 @@ body {
   margin-top: 170px;
   border: 3px solid black; /* Add a border with a color */
   border-radius: 30px;
-  /* background-color: #7e8bda; */
   padding-top: 30px;
   padding-bottom: 30px;
+}
+
+/* navbar styles */
+.navbar-brand {
+  font-size: 40px;
 }
 
 .navbar-dark {
@@ -36,55 +37,12 @@ footer.page-footer {
   background-color: #5c71e8;
 }
 
+/* button styles */
 .btn-long {
   width: 200px;
 }
 
-.card-footer {
-  background-color: white;
-}
-
-h5 {
-  font-weight: bold;
-  font-size: 1.3rem;
-}
-
-.list-group {
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.3);
-  border-radius: 0;
-}
-
-p.card-title {
-  font-weight: bold;
-  font-size: large;
-  margin: 0px 0px;
-}
-
-.card-text {
-  margin: 0px 0px;
-}
-
-.card-header {
-  border-radius: 10px 10px 0px 0px !important;
-}
-
-.card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.2s ease;
-  border: 0px;
-  border-radius: 10px;
-}
-
-.card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-a.btn {
-  background-color: #353a3f;
-  color: white;
-}
-
-.btn {
+.btn.btn-purple {
   background-color: #3345a9;
   color: white;
 }
@@ -93,17 +51,47 @@ a.btn.add {
   float: right;
 }
 
+.list-group {
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+}
+
+/* card styles */
+.card-header {
+  font-weight: bold;
+  border-radius: 10px 10px 0px 0px !important;
+}
+
+.card-header.bg-yellow {
+  background-color: #ebca8b;
+}
+
+.card-header.bg-blue {
+  background-color: #5c71e8;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+  border: 0px;
+  border-radius: 10px;
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.wrapper {
+  padding-bottom: 2rem;
+}
+
 .container.part-2 {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 550px;
   overflow-y: scroll;
 }
 
-.card-header {
-  background-color: #ebca8b;
-}
-
-.banner {
+/* .banner {
   background-color: #dcb064;
   padding: 20px 20px 0px 20px;
-}
+} */
