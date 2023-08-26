@@ -80,8 +80,8 @@ p.card-title {
 }
 
 a.btn {
-    background-color: #353A3F;
-    color: white;
+  background-color: #353a3f;
+  color: white;
 }
 
 .btn {
@@ -104,6 +104,6 @@ a.btn.add {
 }
 
 .banner {
-    background-color: #ebca8b;
-    padding: 20px 20px 0px 20px;
+  background-color: #dcb064;
+  padding: 20px 20px 0px 20px;
 }
