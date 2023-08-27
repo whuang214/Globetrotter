@@ -4,7 +4,6 @@ from datetime import time
 from django.contrib.auth.models import User
 
 
-
 CATEGORIES = (("S", "Sightseeing"), ("T", "Things To-Do"), ("F", "Food"))
 
 # user's pk - kwargs={'pk' : self_id}
@@ -20,7 +19,6 @@ class TravelItinerary(models.Model):
     location = models.CharField(max_length=100)
     hotel = models.CharField(max_length=100)
     notes = models.TextField(blank=True)
-    
 
     def __str__(self):
         return f"{self.title} ({self.id})"
@@ -55,4 +53,4 @@ class Flight(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user.id} flies in on {self.flight} {self.arrival_date} at {self.destination}"
+        return f"{self.user.username} flies in on {self.flight} arriving at {self.arrival_time}"

@@ -5,15 +5,21 @@
   href="{% static 'css/itinerary_detail.css' %}"
 />
 <div class="wrapper">
-  <div class="card" style="border-radius: 10px">
+  <div class="card" style="border-radius: 10px; max-height: 75vh">
     <div
-      class="card-header text-center align-items-center"
+      class="card-header bg-yellow text-center align-items-center"
       style="border-radius: 10px 10px 0 0"
     >
-      <h1 class="display-5 font-weight-bold" style="margin: 0 0; padding: 8px 8px 0 8px">{{ itinerary.title }}</h1>
-      <p  style="margin: 0 0"><strong>Destination:</strong> {{ itinerary.location }}</p>
+      <h1
+        class="display-5 font-weight-bold"
+        style="margin: 0 0; padding: 8px 8px 0 8px"
+      >
+        {{ itinerary.title }}
+      </h1>
       <p style="margin: 0 0">
-        <!-- prettier-ignore -->
+        <strong>Destination:</strong> {{ itinerary.location }}
+      </p>
+      <p style="margin: 0 0">
         <strong>Date:</strong> {{ itinerary.start_date|date:'F d, Y' }} -
         {{itinerary.end_date|date:'F d, Y' }}
       </p>
@@ -29,7 +35,7 @@
       ></a>
     </div>
 
-    <div class="card-body">
+    <div class="card-body overflow-auto">
       <div class="row">
         <div class="col-md-5">
           {% comment %} Shared User Card {% endcomment %}
@@ -250,7 +256,7 @@
                 </div>
               </div>
               {% empty %}
-              <p>No activities yet.</p>
+              <p class="m-2 text-muted">No activities yet.</p>
               {% endfor %}
             </div>
           </div>
