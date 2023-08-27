@@ -37,7 +37,7 @@ class Activity(models.Model):
     travelItinerary = models.ForeignKey(TravelItinerary, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.get_category_display()} {self.activity_name} on {self.date_time} located at {self.location}"
+        return f"{self.get_category_display()}"
 
     class Meta:
         ordering = ["date", "time"]
@@ -53,4 +53,4 @@ class Flight(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user.username} flies in on {self.flight} arriving at {self.arrival_time}"
+        return f"{self.user.username}"
