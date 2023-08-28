@@ -33,7 +33,9 @@
         class="btn btn-danger btn-sm"
         ><i class="bi bi-trash"></i
       ></a>
-      <button onClick="window.print()">Print Itinerary</button>
+      <a href="#" class="btn btn-primary btn-sm"
+        ><i class="bi bi-printer"></i
+      ></a>
     </div>
 
     <div class="card-body overflow-auto">
@@ -45,9 +47,9 @@
               class="card-header d-flex justify-content-between align-items-center bg-dark text-white p-0"
               style="border-radius: 10px 10px 0 0"
             >
-              <h5 class="mb-0 pl-2">
+              <h6 class="mb-0 ps-2 fw-bold">
                 <i class="bi bi-person-fill"></i> Shared Users
-              </h5>
+              </h6>
               <a
                 href="{% url 'search_user' itinerary_id=itinerary.id %}"
                 class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
@@ -93,9 +95,9 @@
               class="card-header d-flex justify-content-between align-items-center bg-dark text-white p-0"
               style="border-radius: 10px 10px 0 0"
             >
-              <h5 class="mb-0 pl-2">
+              <h6 class="mb-0 ps-2 fw-bold">
                 <i class="bi bi-airplane-fill"></i> Flights
-              </h5>
+              </h6>
               <a
                 href="{% url 'create_flight' itinerary_id=itinerary.id %}"
                 class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
@@ -152,9 +154,9 @@
               class="card-header d-flex justify-content-between align-items-center bg-dark text-white p-0"
               style="border-radius: 10px 10px 0 0"
             >
-              <h5 class="mb-0 pl-2">
+              <h6 class="mb-0 ps-2 fw-bold">
                 <i class="bi bi-building-fill"></i> Hotel
-              </h5>
+              </h6>
               <a
                 href="{% url 'update_hotel' itinerary.id %}"
                 class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
@@ -181,9 +183,9 @@
               class="card-header d-flex justify-content-between align-items-center bg-dark text-white p-0"
               style="border-radius: 10px 10px 0 0"
             >
-              <h5 class="mb-0 pl-2">
+              <h6 class="mb-0 ps-2 fw-bold">
                 <i class="bi bi-clipboard-fill"></i> Notes
-              </h5>
+              </h6>
               <a
                 href="{% url 'update_notes' itinerary.id %}"
                 class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
@@ -209,9 +211,9 @@
               class="card-header d-flex justify-content-between align-items-center bg-dark text-white p-0"
               style="border-radius: 10px 10px 0 0"
             >
-              <h5 class="mb-0 pl-2">
+              <h6 class="mb-0 ps-2 fw-bold">
                 <i class="bi bi-calendar-event-fill"></i> Activities
-              </h5>
+              </h6>
               <a
                 href="{% url 'create_activity' itinerary_id=itinerary.id %}"
                 class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
@@ -228,7 +230,7 @@
                   class="card-header d-flex justify-content-between align-items-center bg-warning text-white p-0"
                   style="border-radius: 10px 10px 0 0"
                 >
-                  <h5 class="mb-0 p-1 pl-2">{{ activity.name }}</h5>
+                  <h6 class="mb-0 p-1 ps-2 fw-bold">{{ activity.name }}</h6>
                   <div class="button-container">
                     <a
                       href="{% url 'update_activity' itinerary_id=itinerary.id activity_id=activity.id %}"
