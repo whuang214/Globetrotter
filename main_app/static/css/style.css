@@ -97,6 +97,12 @@ a.btn.add {
   overflow-y: scroll;
 }
 
+.caraoselbtn, .caraoselbtn:visited, .caraoselbtn:active, .caraoselbtn:focus{
+  color: white;
+  text-decoration: none;
+}
+
+
 /* .banner {
   background-color: #dcb064;
   padding: 20px 20px 0px 20px;

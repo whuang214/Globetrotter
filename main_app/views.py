@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # models imports
 from .models import TravelItinerary, Activity, Flight
@@ -70,7 +72,7 @@ class LogoutView(LogoutView):
 
 
 # GET request will render the template
-class ItineraryIndex(ListView):
+class ItineraryIndex(LoginRequiredMixin, ListView):
     model = TravelItinerary
     template_name = "itineraries/index.html"
     context_object_name = "itineraries"
