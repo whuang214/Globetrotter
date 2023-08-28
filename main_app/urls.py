@@ -66,4 +66,9 @@ urlpatterns = [
         views.update_hotel,
         name="update_hotel",
     ),
+    path(
+        "itineraries/<int:itinerary_id>/notes/update/",
+        views.update_notes,
+        name="update_notes",
+    ),
 ]
