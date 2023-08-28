@@ -61,4 +61,9 @@ urlpatterns = [
         views.UpdateFlight.as_view(),
         name="update_flight",
     ),
+    path(
+        "itineraries/<int:itinerary_id>/hotel/update/",
+        views.update_hotel,
+        name="update_hotel",
+    ),
 ]

@@ -345,3 +345,21 @@ def add_user_to_itinerary(request, itinerary_id, user_id):
     user = get_object_or_404(User, pk=user_id)
     itinerary.users.add(user)
     return redirect("detail_itinerary", pk=itinerary_id)
+
+
+# render the update hotel form
+# if the request is a POST request, update the hotel
+# itinerary_id is passed in from the url (must equal <int:itinerary_id>)
+def update_hotel(request, itinerary_id):
+    itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+    if request.method == "POST":
+        # get the hotel from the form
+        hotel = request.POST.get("hotel", "")
+        # update the hotel in the itinerary
+        itinerary.hotel = hotel
+        itinerary.save()
+        return redirect("detail_itinerary", pk=itinerary_id)
+    else:
+        return render(
+            request, "itineraries/update_hotel.html", {"itinerary": itinerary}
+        )
