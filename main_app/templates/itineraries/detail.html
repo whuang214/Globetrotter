@@ -33,8 +33,7 @@
         class="btn btn-danger btn-sm"
         ><i class="bi bi-trash"></i
       ></a>
-      <button onClick="window.print()">Print Itinerary
-      </button>
+      <button onClick="window.print()">Print Itinerary</button>
     </div>
 
     <div class="card-body overflow-auto">
@@ -186,7 +185,7 @@
                 <i class="bi bi-clipboard-fill"></i> Notes
               </h5>
               <a
-                href="{% url 'update_itinerary' itinerary.id %}"
+                href="{% url 'update_notes' itinerary.id %}"
                 class="btn btn-outline-dark text-white btn-sm m-0 rounded-pill"
                 ><i class="bi bi-pencil"></i
               ></a>
@@ -196,10 +195,7 @@
               style="max-height: 300px; border-radius: 0 0 10px 10px"
             >
               {% if itinerary.notes == '' %}
-              <p class="small p-1">
-                No notes yet. Just kidding, there is a lot of notes for this.
-                These are all examples
-              </p>
+              <p class="small p-1">No notes yet.</p>
               {% else %}
               <p class="small p-1">{{ itinerary.notes }}</p>
               {% endif %}

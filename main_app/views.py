@@ -363,3 +363,17 @@ def update_hotel(request, itinerary_id):
         return render(
             request, "itineraries/update_hotel.html", {"itinerary": itinerary}
         )
+
+
+def update_notes(request, itinerary_id):
+    itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
+    if request.method == "POST":
+        notes = request.POST.get("notes", "")
+
+        itinerary.notes = notes
+        itinerary.save()
+        return redirect("detail_itinerary", pk=itinerary_id)
+    else:
+        return render(
+            request, "itineraries/update_notes.html", {"itinerary": itinerary}
+        )
