@@ -1,7 +1,6 @@
 # Globetrotter
 
-Streamline travel planning with a user friendly platform that allows all your planning needs to be met via 1 App: Globetrotter! Planning a trip can be complicated and time-consuming,
-especially when its with a group. Our vision is to simplify the art of travel planning by empowering adventurers to effortlessly create, organize, and share personalized itineraries.
+Globetrotter is a user-friendly platform designed to streamline travel planning, meeting all your planning needs in one app. Planning a trip can be complicated and time-consuming, especially when it's with a group. Our vision is to simplify the art of travel planning by empowering adventurers to effortlessly create, organize, and share personalized itineraries.
 
 ## Screenshots
 
