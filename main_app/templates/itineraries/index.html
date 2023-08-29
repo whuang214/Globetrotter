@@ -1,8 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container wrapper mt-4">
   <div class="card" style="max-height: 75vh">
-    <div class="card-header bg-blue text-white">
+    <div
+      class="card-header bg-blue text-white d-flex flex-row justify-content-between align-items-center"
+    >
       <h3 class="fw-bold mb-0">Planned Trips</h3>
+      <a class="btn btn-purple" href="{% url 'create_itinerary' %}">Add </a>
     </div>
     <div class="card-body overflow-auto">
       <div class="row">
