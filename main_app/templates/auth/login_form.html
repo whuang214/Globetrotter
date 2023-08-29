@@ -3,8 +3,13 @@
 {% extends 'base.html' %} {% load static %} {% load widget_tweaks %} {% block content %}
 <style>
   body {
-    background-color: #e3e3e3;
-    background-image: none !important;
+    /* background-color: #e3e3e3; */
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.25)
+    ),
+    url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FArcus_cloud&psig=AOvVaw2eKlOcnrsWrXF0AsXyxY44&ust=1693367443838000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLiRp7n7gIEDFQAAAAAdAAAAABAE") !important
   }
 
   .ticket {
