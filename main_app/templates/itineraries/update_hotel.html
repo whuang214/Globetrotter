@@ -4,8 +4,8 @@
     <div class="col-lg-8">
       <div class="card">
         <div class="card-header bg-yellow">
-          <h4 class="card-title">
-            Update Hotel for <strong>{{ itinerary.title }}</strong>
+          <h4 class="card-title fw-bold mb-0">
+            Update Hotel for {{ itinerary.title }}
           </h4>
         </div>
         <div class="card-body">
@@ -13,7 +13,9 @@
             {% csrf_token %}
 
             <div class="mb-3">
-              <label for="hotelName" class="form-label">Hotel Name</label>
+              <label for="hotelName" class="form-label fw-bold"
+                >Hotel Name:</label
+              >
               <input
                 type="text"
                 class="form-control"
@@ -23,8 +25,9 @@
                 value="{{itinerary.hotel}}"
               />
             </div>
-
-            <button type="submit" class="btn btn-purple">Update Hotel</button>
+            <div class="text-center">
+              <button type="submit" class="btn btn-purple">Update Hotel</button>
+            </div>
           </form>
         </div>
       </div>

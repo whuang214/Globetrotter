@@ -4,16 +4,25 @@
     <div class="col-lg-8">
       <div class="card">
         <div class="card-header bg-yellow">
-          <h4 class="card-title">
-            Create Activity for <strong>{{ travel_itinerary.title }}</strong>
+          <h4 class="card-title fw-bold mb-0">
+            Create Activity for {{ travel_itinerary.title }}
           </h4>
         </div>
         <div class="card-body">
           <form method="POST">
-            {% csrf_token %} {{ form.as_p }}
-            <button type="submit" class="btn btn-purple">
-              Create Activity
-            </button>
+            {% csrf_token %} {% for field in form %}
+            <div class="form-group mb-2">
+              <label for="{{ field.id_for_label }}" class="fw-bold"
+                >{{ field.label }}:</label
+              >
+              {{ field }}
+            </div>
+            {% endfor %}
+            <div class="text-center">
+              <button type="submit" class="btn btn-purple">
+                Create Activity
+              </button>
+            </div>
           </form>
         </div>
       </div>

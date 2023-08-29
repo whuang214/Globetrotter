@@ -2,15 +2,16 @@
 <div class="container mt-4">
   <div class="card">
     <div class="card-header bg-yellow">
-      <h4>Add User to <strong>{{ itinerary.title}}</strong></h4>
+      <h4 class="fw-bold mb-0">Add User to {{ itinerary.title}}</h4>
     </div>
     <div class="card-body">
       <form method="post" action="">
         {% csrf_token %}
+        <label for="search" class="fw-bold mb-2">Search:</label>
         <div class="input-group">
           <input
             type="text"
-            class="form-control"
+            class="form-control mb-2"
             name="search"
             placeholder="Search for a user..."
           />

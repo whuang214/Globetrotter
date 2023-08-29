@@ -4,8 +4,8 @@
     <div class="col-lg-8">
       <div class="card">
         <div class="card-header bg-yellow">
-          <h4 class="card-title">
-            Add Flight for <strong>{{ travel_itinerary.title }}</strong>
+          <h4 class="card-title mb-0 fw-bold">
+            Add Flight for {{ travel_itinerary.title }}
           </h4>
         </div>
         <div class="card-body">
@@ -15,8 +15,8 @@
             <div class="mb-3">
               <label
                 for="{{ form.arrival_time.id_for_label }}"
-                class="form-label"
-                >Arrival Time</label
+                class="form-label fw-bold"
+                >Arrival Time:</label
               >
               {{ form.arrival_time }} {% if form.arrival_time.errors %}
               <div class="text-danger">{{ form.arrival_time.errors.0 }}</div>
@@ -24,15 +24,19 @@
             </div>
 
             <div class="mb-3">
-              <label for="{{ form.flight.id_for_label }}" class="form-label"
-                >Flight Number/ID</label
+              <label
+                for="{{ form.flight.id_for_label }}"
+                class="form-label fw-bold"
+                >Flight Number/ID:</label
               >
               {{ form.flight }} {% if form.flight.errors %}
               <div class="text-danger">{{ form.flight.errors.0 }}</div>
               {% endif %}
             </div>
 
-            <button type="submit" class="btn btn-purple">Add Flight</button>
+            <div class="text-center">
+              <button type="submit" class="btn btn-purple">Add Flight</button>
+            </div>
           </form>
         </div>
       </div>

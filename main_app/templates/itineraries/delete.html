@@ -12,16 +12,18 @@
               >{{ itinerary.title }}</strong
             >"?
           </p>
-          <form method="POST" class="d-inline-block">
-            {% csrf_token %}
-            <input type="submit" value="Delete" class="btn btn-danger" />
-          </form>
-          <a href="{% url 'index_itinerary' %}" class="btn btn-dark ml-2"
-            >Cancel</a
-          >
+          <div class="d-flex justify-content-center mt-3">
+            <form method="POST" class="d-inline-block">
+              {% csrf_token %}
+              <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+            <a href="{% url 'index_itinerary' %}" class="btn btn-dark ms-2"
+              >Cancel</a
+            >
+          </div>
         </div>
       </div>
     </div>
   </div>
+  {% endblock %}
 </div>
-{% endblock %}

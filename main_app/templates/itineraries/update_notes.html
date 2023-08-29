@@ -4,8 +4,8 @@
     <div class="col-lg-8">
       <div class="card">
         <div class="card-header bg-yellow">
-          <h4 class="card-title">
-            Update Notes for <strong>{{ itinerary.title }}</strong>
+          <h4 class="card-title fw-bold mb-0">
+            Update Notes for {{ itinerary.title }}
           </h4>
         </div>
         <div class="card-body">
@@ -13,7 +13,7 @@
             {% csrf_token %}
 
             <div class="mb-3">
-              <label for="notesText" class="form-label">Notes</label>
+              <label for="notesText" class="form-label fw-bold">Notes:</label>
               <textarea
                 class="form-control"
                 id="notesText"
@@ -25,7 +25,9 @@
               >
             </div>
 
-            <button type="submit" class="btn btn-purple">Update Notes</button>
+            <div class="text-center">
+              <button type="submit" class="btn btn-purple">Update Notes</button>
+            </div>
           </form>
         </div>
       </div>
