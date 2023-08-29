@@ -24,6 +24,22 @@
     margin-left: 90px;
     padding: 0px 12px;
   }
+
+  @media screen and (max-width: 991px) {
+    #id_username,
+    #id_password {
+      width: 350px;
+      margin-left: 110px;
+      padding: 0px 12px;
+    }
+
+    .ticket {
+      background-image: url('{% static "images/Globetrotter-small.jpg" %}');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
 </style>
 
 {% if form.non_field_errors %}
@@ -32,7 +48,7 @@
 </div>
 {% endif %}
 <div class="container mt-4 mx-auto">
-  <div class="row justify-content-center" style="height: 290px;">
+  <div class="row justify-content-center" style="height: 290px">
     <div class="card mt-0 ticket">
       <!-- prettier-ignore -->
       <div class="card-body" style="max-height: 70vh; overflow-y: auto; padding: 18px 16px 16px 16px;">
