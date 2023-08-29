@@ -58,6 +58,8 @@ class LoginView(LoginView):
     template_name = "auth/login_form.html"
     # dont need to specify the form_class b/c it is already specified in the super class
     success_url = reverse_lazy("home")
+    # if there is a next parameter in the url, redirect to that url
+    redirect_authenticated_user = True
 
     # add a title to the context
     def get_context_data(self, **kwargs):
