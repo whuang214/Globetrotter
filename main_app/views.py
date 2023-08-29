@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # models imports
 from .models import TravelItinerary, Activity, Flight
@@ -56,6 +58,8 @@ class LoginView(LoginView):
     template_name = "auth/login_form.html"
     # dont need to specify the form_class b/c it is already specified in the super class
     success_url = reverse_lazy("home")
+    # if there is a next parameter in the url, redirect to that url
+    redirect_authenticated_user = True
 
     # add a title to the context
     def get_context_data(self, **kwargs):
@@ -70,7 +74,7 @@ class LogoutView(LogoutView):
 
 
 # GET request will render the template
-class ItineraryIndex(ListView):
+class ItineraryIndex(LoginRequiredMixin, ListView):
     model = TravelItinerary
     template_name = "itineraries/index.html"
     context_object_name = "itineraries"
@@ -85,13 +89,13 @@ class ItineraryIndex(ListView):
         return queryset
 
 
-class ItineraryDetail(DetailView):
+class ItineraryDetail(LoginRequiredMixin, DetailView):
     model = TravelItinerary
     template_name = "itineraries/detail.html"
     context_object_name = "itinerary"
 
 
-class ItineraryCreate(CreateView):
+class ItineraryCreate(LoginRequiredMixin, CreateView):
     model = TravelItinerary
     template_name = "itineraries/create.html"
     fields = ["title", "start_date", "end_date", "location"]
@@ -123,7 +127,7 @@ class ItineraryCreate(CreateView):
         return super().form_valid(form)
 
 
-class ItineraryUpdate(UpdateView):
+class ItineraryUpdate(LoginRequiredMixin, UpdateView):
     model = TravelItinerary
     template_name = "itineraries/update.html"
     fields = ["title", "start_date", "end_date", "location"]
@@ -156,7 +160,7 @@ class ItineraryDelete(DeleteView):
     success_url = reverse_lazy("index_itinerary")
 
 
-class ActivityCreate(CreateView):
+class ActivityCreate(LoginRequiredMixin, CreateView):
     model = Activity
     template_name = "activities/create.html"
     fields = ["name", "category", "date", "time", "location"]
@@ -195,7 +199,7 @@ class ActivityCreate(CreateView):
         return context
 
 
-class ActivityUpdate(UpdateView):
+class ActivityUpdate(LoginRequiredMixin, UpdateView):
     model = Activity
     template_name = "activities/update.html"
     context_object_name = "activity"
@@ -234,7 +238,7 @@ class ActivityUpdate(UpdateView):
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
 
 
-class ActivityDelete(DeleteView):
+class ActivityDelete(LoginRequiredMixin, DeleteView):
     model = Activity
     template_name = "activities/delete.html"
     context_object_name = "activity"
@@ -252,7 +256,7 @@ class ActivityDelete(DeleteView):
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
 
 
-class CreateFlight(CreateView):
+class CreateFlight(LoginRequiredMixin, CreateView):
     model = Flight
     template_name = "flights/create.html"
     fields = ["flight", "arrival_time"]
@@ -298,7 +302,7 @@ class CreateFlight(CreateView):
         return redirect("detail_itinerary", pk=itinerary_id)
 
 
-class UpdateFlight(UpdateView):
+class UpdateFlight(LoginRequiredMixin, UpdateView):
     model = Flight
     template_name = "flights/update.html"
     context_object_name = "flight"
@@ -317,6 +321,7 @@ class UpdateFlight(UpdateView):
         return reverse("detail_itinerary", kwargs={"pk": itinerary_id})
 
 
+@login_required
 def search_user(request, itinerary_id):
     users = []
     itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
@@ -339,6 +344,7 @@ def search_user(request, itinerary_id):
     return render(request, "itineraries/add_user.html", context)
 
 
+@login_required
 def add_user_to_itinerary(request, itinerary_id, user_id):
     itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
     # get the user id from the form
@@ -347,6 +353,7 @@ def add_user_to_itinerary(request, itinerary_id, user_id):
     return redirect("detail_itinerary", pk=itinerary_id)
 
 
+@login_required
 # render the update hotel form
 # if the request is a POST request, update the hotel
 # itinerary_id is passed in from the url (must equal <int:itinerary_id>)
@@ -365,6 +372,7 @@ def update_hotel(request, itinerary_id):
         )
 
 
+@login_required
 def update_notes(request, itinerary_id):
     itinerary = get_object_or_404(TravelItinerary, pk=itinerary_id)
     if request.method == "POST":

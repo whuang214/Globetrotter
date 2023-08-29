@@ -154,6 +154,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = "static"
 
+LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"  # redirect to home page after login
 LOGOUT_REDIRECT_URL = "/"  # redirect to home page after logout
 

@@ -4,16 +4,49 @@
   type="text/css"
   href="{% static 'css/itinerary_detail.css' %}"
 />
+<style>
+  /* Print specific styles */
+  @media print {
+    /* Hide unnecessary elements */
+    .btn,
+    .bi {
+      display: none;
+    }
+
+    /* Maximize content width */
+    .wrapper,
+    .card {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+
+    /* Optimize fonts and colors */
+    body {
+      color: black;
+      background-color: white;
+      font-size: 12pt;
+    }
+
+    a[href]:after {
+      content: " (" attr(href) ") ";
+    }
+
+    /* Page breaks */
+    .card {
+      page-break-inside: avoid;
+    }
+  }
+</style>
 <div class="wrapper">
   <div class="card" style="border-radius: 10px; max-height: 75vh">
     <div
       class="card-header bg-yellow text-center align-items-center"
       style="border-radius: 10px 10px 0 0"
     >
-      <h1
-        class="display-5 fw-bold"
-        style="margin: 0 0; padding: 8px 8px 0 8px"
-      >
+      <h1 class="display-5 fw-bold" style="margin: 0 0; padding: 8px 8px 0 8px">
         {{ itinerary.title }}
       </h1>
       <p style="margin: 0 0">
@@ -33,9 +66,13 @@
         class="btn btn-danger btn-sm"
         ><i class="bi bi-trash"></i
       ></a>
-      <a href="#" class="btn btn-primary btn-sm"
-        ><i class="bi bi-printer"></i
-      ></a>
+      <a
+        href="#"
+        class="btn btn-primary btn-sm"
+        onclick="window.print(); return false;"
+      >
+        <i class="bi bi-printer"></i>
+      </a>
     </div>
 
     <div class="card-body overflow-auto">
@@ -66,12 +103,8 @@
                 <thead>
                   <tr>
                     <th class="small fw-bold text-center">Username</th>
-                    <th class="small fw-bold text-center">
-                      First Name
-                    </th>
-                    <th class="small fw-bold text-center">
-                      Last Name
-                    </th>
+                    <th class="small fw-bold text-center">First Name</th>
+                    <th class="small fw-bold text-center">Last Name</th>
                   </tr>
                 </thead>
 
@@ -115,9 +148,7 @@
                   <tr>
                     <th class="small fw-bold text-center">Name</th>
                     <th class="small fw-bold text-center">Flight</th>
-                    <th class="small fw-bold text-center">
-                      Arrival Time
-                    </th>
+                    <th class="small fw-bold text-center">Arrival Time</th>
                     <th class="small fw-bold text-center"></th>
                   </tr>
                 </thead>
@@ -172,8 +203,6 @@
               {% else %}
               <p class="small p-1">No hotel yet.</p>
               {% endif %}
-              <br />
-              Insert Hotel Map Here
             </div>
           </div>
           <br />

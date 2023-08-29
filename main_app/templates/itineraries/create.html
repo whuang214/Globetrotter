@@ -4,17 +4,15 @@
     <div class="col-lg-8">
       <div class="card">
         <div class="card-header bg-yellow">
-          <h3 class="card-title fw-bold mb-0">
-            Create a Travel Itinerary
-          </h3>
+          <h3 class="card-title fw-bold mb-0">Create a Travel Itinerary</h3>
         </div>
         <div class="card-body">
           <!-- prettier-ignore -->
           <form action="" method="POST">
             {% csrf_token %}
             {% for field in form %}
-            <div class="form-group">
-              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <div class="form-group mb-3">
+              <label class="fw-bold" for="{{ field.id_for_label }}">{{ field.label }}:</label>
               {{ field }}
             </div>
             {% endfor %}
